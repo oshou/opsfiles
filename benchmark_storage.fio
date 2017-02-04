@@ -1,0 +1,23 @@
+[Sequential read]
+rw=read
+directory=/tmp
+size=100m
+ioengine=libaio
+
+[Sequential write]
+rw=write
+directory=/tmp
+size=100m
+ioengine=libaio
+
+[Random read]
+rw=randread
+directory=/tmp
+size=100m
+ioengine=libaio
+
+[Random write]
+rw=randwrite
+directory=/tmp
+size=100m
+ioengine=libaio
