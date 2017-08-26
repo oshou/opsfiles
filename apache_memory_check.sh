@@ -31,7 +31,7 @@ do
     CHILD_MEM_NO_SHARED=`expr $CHILD_MEM - $CHILD_MEM_SHARED` 
     #メモリ合計
     CHILD_MEM_TOTAL=`expr $CHILD_MEM_TOTAL + $CHILD_MEM`
-    CHILD_MEM_TOTAL_NO_SHARED=`expr $CHILD_MEM_TOTAL + $CHILD_MEM_NO_SHARED`
+    CHILD_MEM_TOTAL_NO_SHARED=`expr $CHILD_MEM_TOTAL_NO_SHARED + $CHILD_MEM_NO_SHARED`
     
     #カウントアップ
     COUNT=`expr $COUNT + 1`
@@ -42,12 +42,15 @@ done
 CHILD_MEM_AVG=`expr $CHILD_MEM_TOTAL / $COUNT`
 CHILD_MEM_AVG_NO_SHARED=`expr $CHILD_MEM_TOTAL_NO_SHARED / $COUNT`
 
+MEM_TOTAL_USED=`expr $PARENT_MEM + $CHILD_MEM_TOTAL_NO_SHARED`
+MAX_CLIENTS_ESTIMATE=$(((MEM_TOTAL - PARENT_MEM) / CHILD_MEM_AVG_NO_SHARED))
+
 echo -e "子プロセス数 \t\t\t\t: ${COUNT}"
 echo -e "子プロセスメモリ使用量合計 \t\t: ${CHILD_MEM_TOTAL} ${UNIT}"
 echo -e "子プロセスメモリ使用量平均 \t\t: ${CHILD_MEM_AVG} ${UNIT}"
 echo -e "子プロセスメモリ使用量合計(共有除く) \t: ${CHILD_MEM_TOTAL_NO_SHARED} ${UNIT}"
 echo -e "子プロセスメモリ使用量平均(共有除く) \t: ${CHILD_MEM_AVG_NO_SHARED} ${UNIT}"
 echo -e "=========================================================================="
-MEM_TOTAL_USED=`expr $PARENT_MEM + $CHILD_MEM_TOTAL_NO_SHARED`
-echo -e "httpd 総メモリ使用量 \t: ${MEM_TOTAL_USED} ${UNIT}"
 echo -e "総メモリ量 \t\t: ${MEM_TOTAL} ${UNIT}"
+echo -e "httpd 総メモリ使用量 \t: ${MEM_TOTAL_USED} ${UNIT}"
+echo -e "MaxClient目安 \t: ${MAX_CLIENTS_ESTIMATE}"
