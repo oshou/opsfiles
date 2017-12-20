@@ -1,0 +1,3397 @@
+2017年 12月 20日 水曜日 12:44:02 JST
+z001-search11
+[cpu]============================================================================================================
+アーキテクチャ:        x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+コアあたりのスレッド数:1
+ソケットあたりのコア数:1
+Socket(s):             4
+NUMAノード:            1
+ベンダーID:            GenuineIntel
+CPUファミリー:         6
+モデル:                63
+Model name:            Intel(R) Xeon(R) CPU E5-2670 v3 @ 2.30GHz
+ステッピング:          2
+CPU MHz:               2299.996
+BogoMIPS:              4599.99
+ハイパーバイザーベンダー:KVM
+仮想化タイプ:          完全仮想化
+L1d キャッシュ:        32K
+L1i キャッシュ:        32K
+L2 キャッシュ:         4096K
+NUMAノード 0 CPU:      0-3
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm fsgsbase tsc_adjust bmi1 avx2 bmi2 erms invpcid xsaveopt
+[mem]============================================================================================================
+              total        used        free      shared  buff/cache   available
+Mem:           3951        1068         981         237        1901        2267
+Swap:          4095         147        3948
+MemTotal:        4046412 kB
+MemFree:         1004808 kB
+Buffers:          123056 kB
+Cached:          1581840 kB
+SwapCached:        11256 kB
+SwapTotal:       4194300 kB
+SwapFree:        4043040 kB
+Slab:             242356 kB
+[partition]======================================================================================================
+
+Disk /dev/vda: 53.7 GB, 53687091200 bytes, 104857600 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+Disk label type: gpt
+Disk identifier: BD6231ED-965C-4F26-95BD-8CDC2AC71AF3
+
+
+#         Start          End    Size  Type            Name
+ 1         2048         6143      2M  BIOS boot parti biosboot
+ 2         6144    104855551     50G  EFI System      root
+[filesystem]=====================================================================================================
+ファイルシス   タイプ   サイズ  使用  残り 使用% マウント位置
+/dev/vda2      ext4        50G   15G   32G   32% /
+devtmpfs       devtmpfs   2.0G     0  2.0G    0% /dev
+tmpfs          tmpfs      2.0G     0  2.0G    0% /dev/shm
+tmpfs          tmpfs      2.0G  264M  1.7G   14% /run
+tmpfs          tmpfs      2.0G     0  2.0G    0% /sys/fs/cgroup
+tmpfs          tmpfs      396M     0  396M    0% /run/user/2236
+tmpfs          tmpfs      396M     0  396M    0% /run/user/2230
+tmpfs          tmpfs      396M     0  396M    0% /run/user/0
+tmpfs          tmpfs      396M     0  396M    0% /run/user/2231
+tmpfs          tmpfs      396M     0  396M    0% /run/user/2238
+[OS-kernel]======================================================================================================
+Linux z001-search11 3.10.0-693.2.2.el7.x86_64 #1 SMP Tue Sep 12 22:26:13 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+[OS-release]=====================================================================================================
+CentOS Linux release 7.4.1708 (Core) 
+[locale]=========================================================================================================
+LANG="ja_JP.EUC-JP"
+[auth(su)]=======================================================================================================
+#%PAM-1.0
+auth		sufficient	pam_rootok.so
+# Uncomment the following line to implicitly trust users in the "wheel" group.
+#auth		sufficient	pam_wheel.so trust use_uid
+# Uncomment the following line to require a user to be in the "wheel" group.
+auth  required  pam_wheel.so use_uid
+auth		substack	system-auth
+auth		include		postlogin
+account		sufficient	pam_succeed_if.so uid = 0 use_uid quiet
+account		include		system-auth
+password	include		system-auth
+session		include		system-auth
+session		include		postlogin
+session		optional	pam_xauth.so
+[auth(sudo)]=====================================================================================================
+## Sudoers allows particular users to run various commands as
+## the root user, without needing the root password.
+##
+## Examples are provided at the bottom of the file for collections
+## of related commands, which can then be delegated out to particular
+## users or groups.
+## 
+## This file must be edited with the 'visudo' command.
+
+## Host Aliases
+## Groups of machines. You may prefer to use hostnames (perhaps using 
+## wildcards for entire domains) or IP addresses instead.
+# Host_Alias     FILESERVERS = fs1, fs2
+# Host_Alias     MAILSERVERS = smtp, smtp2
+
+## User Aliases
+## These aren't often necessary, as you can use regular groups
+## (ie, from files, LDAP, NIS, etc) in this file - just use %groupname 
+## rather than USERALIAS
+# User_Alias ADMINS = jsmith, mikem
+
+
+## Command Aliases
+## These are groups of related commands...
+
+## Networking
+# Cmnd_Alias NETWORKING = /sbin/route, /sbin/ifconfig, /bin/ping, /sbin/dhclient, /usr/bin/net, /sbin/iptables, /usr/bin/rfcomm, /usr/bin/wvdial, /sbin/iwconfig, /sbin/mii-tool
+
+## Installation and management of software
+# Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum
+
+## Services
+# Cmnd_Alias SERVICES = /sbin/service, /sbin/chkconfig, /usr/bin/systemctl start, /usr/bin/systemctl stop, /usr/bin/systemctl reload, /usr/bin/systemctl restart, /usr/bin/systemctl status, /usr/bin/systemctl enable, /usr/bin/systemctl disable
+
+## Updating the locate database
+# Cmnd_Alias LOCATE = /usr/bin/updatedb
+
+## Storage
+# Cmnd_Alias STORAGE = /sbin/fdisk, /sbin/sfdisk, /sbin/parted, /sbin/partprobe, /bin/mount, /bin/umount
+
+## Delegating permissions
+# Cmnd_Alias DELEGATING = /usr/sbin/visudo, /bin/chown, /bin/chmod, /bin/chgrp 
+
+## Processes
+# Cmnd_Alias PROCESSES = /bin/nice, /bin/kill, /usr/bin/kill, /usr/bin/killall
+
+## Drivers
+# Cmnd_Alias DRIVERS = /sbin/modprobe
+
+# Defaults specification
+
+#
+# Refuse to run if unable to disable echo on the tty.
+#
+Defaults   !visiblepw
+
+#
+# Preserving HOME has security implications since many programs
+# use it when searching for configuration files. Note that HOME
+# is already set when the the env_reset option is enabled, so
+# this option is only effective for configurations where either
+# env_reset is disabled or HOME is present in the env_keep list.
+#
+Defaults    always_set_home
+
+Defaults    env_reset
+Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+
+#
+# Adding HOME to env_keep may enable a user to run unrestricted
+# commands via sudo.
+#
+# Defaults   env_keep += "HOME"
+
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+
+## Next comes the main part: which users can run what software on 
+## which machines (the sudoers file can be shared between multiple
+## systems).
+## Syntax:
+##
+## 	user	MACHINE=COMMANDS
+##
+## The COMMANDS section may have other options added to it.
+##
+## Allow root to run any commands anywhere 
+root	ALL=(ALL) 	ALL
+
+## Allows members of the 'sys' group to run networking, software, 
+## service management apps and more.
+# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+
+## Allows people in group wheel to run all commands
+%wheel	ALL=(ALL)	ALL
+
+## Same thing without a password
+%wheel ALL=(ALL) ALL
+
+## Allows members of the users group to mount and unmount the 
+## cdrom as root
+# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+
+## Allows members of the users group to shutdown this system
+# %users  localhost=/sbin/shutdown -h now
+
+## Read drop-in files from /etc/sudoers.d (the # here does not mean a comment)
+#includedir /etc/sudoers.d
+ansible ALL=(ALL) NOPASSWD: ALL
+insops  ALL=(ALL) NOPASSWD: ALL
+#Defaults requiretty
+Defaults:insops !requiretty
+[groups]=========================================================================================================
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:saito-nao,matsuoka,tetsumoto,saito-t,tonooka,chung,tsutsumi,insops,atsushi-aoki
+cdrom:x:11:
+mail:x:12:postfix
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:30:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+nobody:x:99:
+users:x:100:
+utmp:x:22:
+utempter:x:35:
+input:x:999:
+systemd-journal:x:190:
+systemd-bus-proxy:x:998:
+systemd-network:x:192:
+dbus:x:81:
+polkitd:x:997:
+ssh_keys:x:996:
+dip:x:40:
+tss:x:59:
+sshd:x:74:
+postdrop:x:90:
+postfix:x:89:
+ntp:x:38:
+cgred:x:995:
+abrt:x:173:
+rpc:x:32:
+libstoragemgmt:x:994:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+slocate:x:21:
+chrony:x:993:
+tcpdump:x:72:
+unbound:x:992:
+ansible:x:1000:
+saito-nao:x:2231:
+matsuoka:x:2232:
+tetsumoto:x:2233:
+saito-t:x:2234:
+tonooka:x:2235:
+chung:x:2236:
+tsutsumi:x:2237:
+insops:x:2238:
+zabbix:x:991:
+apache:x:48:
+saslauth:x:76:
+mysql:x:27:
+atsushi-aoki:x:2239:
+td-agent:x:990:
+epmd:x:989:
+test:x:2240:
+[users]==========================================================================================================
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:99:99:Nobody:/:/sbin/nologin
+systemd-bus-proxy:x:999:998:systemd Bus Proxy:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+polkitd:x:998:997:User for polkitd:/:/sbin/nologin
+tss:x:59:59:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/var/empty/sshd:/sbin/nologin
+postfix:x:89:89::/var/spool/postfix:/sbin/nologin
+ntp:x:38:38::/etc/ntp:/sbin/nologin
+abrt:x:173:173::/etc/abrt:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+libstoragemgmt:x:997:994:daemon account for libstoragemgmt:/var/run/lsm:/sbin/nologin
+chrony:x:996:993::/var/lib/chrony:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+unbound:x:995:992:Unbound DNS resolver:/etc/unbound:/sbin/nologin
+ansible:x:2230:1000::/home/ansible:/bin/bash
+saito-nao:x:2231:2231::/home/saito-nao:/bin/bash
+matsuoka:x:2232:2232::/home/matsuoka:/bin/bash
+tetsumoto:x:2233:2233::/home/tetsumoto:/bin/bash
+saito-t:x:2234:2234::/home/saito-t:/bin/bash
+tonooka:x:2235:2235::/home/tonooka:/bin/bash
+chung:x:2236:2236::/home/chung:/bin/bash
+tsutsumi:x:2237:2237::/home/tsutsumi:/bin/bash
+insops:x:2238:2238::/home/insops:/bin/bash
+zabbix:x:994:991:Zabbix Monitoring System:/var/lib/zabbix:/sbin/nologin
+apache:x:48:48:Apache:/usr/share/httpd:/sbin/nologin
+saslauth:x:993:76:Saslauthd user:/run/saslauthd:/sbin/nologin
+mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/false
+atsushi-aoki:x:2239:2239::/home/atsushi-aoki:/bin/bash
+td-agent:x:992:990:td-agent:/var/lib/td-agent:/sbin/nologin
+epmd:x:991:989:Erlang Port Mapper Daemon:/tmp:/sbin/nologin
+test:x:2240:2240::/home/test:/bin/bash
+[selinux]========================================================================================================
+Disabled
+[network(ip-interface)]==========================================================================================
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet 150.95.46.29/32 brd 150.95.46.29 scope global lo:0
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether fa:16:3e:1c:60:0f brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.30/21 brd 192.168.7.255 scope global eth0
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether fa:16:3e:ac:1f:50 brd ff:ff:ff:ff:ff:ff
+    inet 150.95.32.224/23 brd 150.95.33.255 scope global eth1
+       valid_lft forever preferred_lft forever
+[network(routing-table)]=========================================================================================
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         150.95.32.1     0.0.0.0         UG        0 0          0 eth1
+150.95.32.0     0.0.0.0         255.255.254.0   U         0 0          0 eth1
+192.168.0.0     0.0.0.0         255.255.248.0   U         0 0          0 eth0
+[resolver(priority)]=============================================================================================
+#hosts:     db files nisplus nis dns
+hosts:      files dns myhostname
+[resolver(hosts)]================================================================================================
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+#::1
+192.168.0.1 z001-bastion
+#157.7.219.204  search.jword.jp
+192.168.0.30   z001-search11
+192.168.0.31   z001-search12
+192.168.0.32   z001-search13
+192.168.0.33   z001-search14
+[resolver(dns resolver)]=========================================================================================
+# generated by bash script called from cloud-init
+nameserver 127.0.0.1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 203.167.55.20
+nameserver 210.172.134.60
+[yum-repository]=================================================================================================
+合計 96
+drwxr-xr-x.   2 root root  4096 11月  9 18:00 .
+drwxr-xr-x. 101 root root 12288 12月 19 17:17 ..
+-rw-r--r--    1 root root  1664  8月 31 00:53 CentOS-Base.repo
+-rw-r--r--    1 root root  1309  8月 31 00:53 CentOS-CR.repo
+-rw-r--r--    1 root root   649  8月 31 00:53 CentOS-Debuginfo.repo
+-rw-r--r--    1 root root   630  8月 31 00:53 CentOS-Media.repo
+-rw-r--r--    1 root root  1331  8月 31 00:53 CentOS-Sources.repo
+-rw-r--r--    1 root root  3830  8月 31 00:53 CentOS-Vault.repo
+-rw-r--r--    1 root root   314  8月 31 00:53 CentOS-fasttrack.repo
+-rw-r--r--    1 root root  1050 10月  3 02:44 epel-testing.repo
+-rw-r--r--.   1 root root   957  2月 17  2017 epel.repo
+-rw-r--r--    1 root root   951  6月 25 00:04 epel.repo.rpmnew
+-rw-r--r--    1 root root  1663  4月  5  2017 mysql-community-source.repo
+-rw-r--r--    1 root root  1627  4月  5  2017 mysql-community.repo
+-rw-r--r--    1 root root   457  6月 30 21:15 remi-php54.repo
+-rw-r--r--    1 root root  1316  6月 30 21:15 remi-php70.repo
+-rw-r--r--    1 root root  1316  6月 30 21:15 remi-php71.repo
+-rw-r--r--    1 root root  1316  6月 30 21:15 remi-php72.repo
+-rw-r--r--    1 root root   751  6月 30 21:15 remi-safe.repo
+-rw-r--r--    1 root root  2609  6月 30 21:15 remi.repo
+-rw-r--r--    1 root root   174 10月 20 11:26 td.repo
+-rw-r--r--    1 root root   410  9月 14  2016 zabbix.repo
+[packages(yum)]==================================================================================================
+読み込んだプラグイン:fastestmirror, langpacks
+インストール済みパッケージ
+GeoIP.x86_64                         1.5.0-11.el7                    @anaconda  
+MySQL-python.x86_64                  1.2.5-1.el7                     @base      
+NetworkManager.x86_64                1:1.8.0-11.el7_4                @updates   
+NetworkManager-libnm.x86_64          1:1.8.0-11.el7_4                @updates   
+NetworkManager-ppp.x86_64            1:1.8.0-11.el7_4                @updates   
+NetworkManager-team.x86_64           1:1.8.0-11.el7_4                @updates   
+NetworkManager-tui.x86_64            1:1.8.0-11.el7_4                @updates   
+NetworkManager-wifi.x86_64           1:1.8.0-11.el7_4                @updates   
+PyYAML.x86_64                        3.10-11.el7                     @base      
+SDL.x86_64                           1.2.15-14.el7                   @base      
+abrt.x86_64                          2.1.11-48.el7.centos            @base      
+abrt-addon-ccpp.x86_64               2.1.11-48.el7.centos            @base      
+abrt-addon-kerneloops.x86_64         2.1.11-48.el7.centos            @base      
+abrt-addon-pstoreoops.x86_64         2.1.11-48.el7.centos            @base      
+abrt-addon-python.x86_64             2.1.11-48.el7.centos            @base      
+abrt-addon-vmcore.x86_64             2.1.11-48.el7.centos            @base      
+abrt-addon-xorg.x86_64               2.1.11-48.el7.centos            @base      
+abrt-cli.x86_64                      2.1.11-48.el7.centos            @base      
+abrt-console-notification.x86_64     2.1.11-48.el7.centos            @base      
+abrt-dbus.x86_64                     2.1.11-48.el7.centos            @base      
+abrt-libs.x86_64                     2.1.11-48.el7.centos            @base      
+abrt-python.x86_64                   2.1.11-48.el7.centos            @base      
+abrt-retrace-client.x86_64           2.1.11-48.el7.centos            @base      
+abrt-tui.x86_64                      2.1.11-48.el7.centos            @base      
+acl.x86_64                           2.2.51-12.el7                   @anaconda  
+aic94xx-firmware.noarch              30-6.el7                        @anaconda  
+alsa-firmware.noarch                 1.0.28-2.el7                    @anaconda  
+alsa-lib.x86_64                      1.1.3-3.el7                     @base      
+alsa-tools-firmware.x86_64           1.1.0-1.el7                     @anaconda  
+apr.x86_64                           1.4.8-3.el7                     @base      
+apr-devel.x86_64                     1.4.8-3.el7                     @base      
+apr-util.x86_64                      1.5.2-6.el7                     @base      
+apr-util-devel.x86_64                1.5.2-6.el7                     @base      
+at.x86_64                            3.1.13-22.el7                   @base      
+atk.x86_64                           2.22.0-3.el7                    @base      
+attr.x86_64                          2.4.46-12.el7                   @base      
+audit.x86_64                         2.7.6-3.el7                     @base      
+audit-libs.i686                      2.7.6-3.el7                     @base      
+audit-libs.x86_64                    2.7.6-3.el7                     @base      
+audit-libs-python.x86_64             2.7.6-3.el7                     @base      
+augeas-libs.x86_64                   1.4.0-2.el7_4.2                 @updates   
+authconfig.x86_64                    6.2.8-30.el7                    @base      
+autoconf.noarch                      2.69-11.el7                     @base      
+autogen-libopts.x86_64               5.18-5.el7                      @base      
+automake.noarch                      1.13.4-3.el7                    @base      
+avahi-libs.x86_64                    0.6.31-17.el7                   @base      
+basesystem.noarch                    10.0-7.el7.centos               @anaconda  
+bash.x86_64                          4.2.46-29.el7_4                 @updates   
+bash-completion.noarch               1:2.1-6.el7                     @base      
+bc.x86_64                            1.06.95-13.el7                  @base      
+bind-libs.x86_64                     32:9.9.4-51.el7                 @updates   
+bind-libs-lite.x86_64                32:9.9.4-51.el7                 @updates   
+bind-license.noarch                  32:9.9.4-51.el7                 @updates   
+bind-utils.x86_64                    32:9.9.4-51.el7                 @updates   
+binutils.x86_64                      2.25.1-32.base.el7_4.1          @updates   
+biosdevname.x86_64                   0.7.2-2.el7                     @base      
+bison.x86_64                         3.0.4-1.el7                     @base      
+blktrace.x86_64                      1.0.5-8.el7                     @base      
+boost-date-time.x86_64               1.53.0-27.el7                   @base      
+boost-system.x86_64                  1.53.0-27.el7                   @base      
+boost-thread.x86_64                  1.53.0-27.el7                   @base      
+bridge-utils.x86_64                  1.5-9.el7                       @base      
+btrfs-progs.x86_64                   4.9.1-1.el7                     @base      
+byacc.x86_64                         1.9.20130304-3.el7              @base      
+bzip2.x86_64                         1.0.6-13.el7                    @base      
+bzip2-libs.i686                      1.0.6-13.el7                    @base      
+bzip2-libs.x86_64                    1.0.6-13.el7                    @anaconda  
+ca-certificates.noarch               2017.2.14-71.el7                @base      
+cairo.x86_64                         1.14.8-2.el7                    @base      
+centos-indexhtml.noarch              7-9.el7.centos                  @base      
+centos-logos.noarch                  70.0.6-3.el7.centos             @anaconda  
+centos-release.x86_64                7-4.1708.el7.centos             @base      
+checkpolicy.x86_64                   2.5-4.el7                       @base      
+chkconfig.x86_64                     1.7.4-1.el7                     @base      
+chrony.x86_64                        3.1-2.el7.centos                @base      
+cloud-init.x86_64                    0.7.9-9.el7.centos.2            @base      
+cloud-utils-growpart.noarch          0.29-2.el7                      @base      
+coreutils.x86_64                     8.22-18.el7                     @anaconda  
+cpio.x86_64                          2.11-25.el7_4                   @updates   
+cpp.x86_64                           4.8.5-16.el7                    @base      
+cracklib.i686                        2.9.0-11.el7                    @base      
+cracklib.x86_64                      2.9.0-11.el7                    @anaconda  
+cracklib-dicts.x86_64                2.9.0-11.el7                    @anaconda  
+crda.x86_64                          3.13_2016.02.08-1.el7           @base      
+cronie.x86_64                        1.4.11-17.el7                   @base      
+cronie-anacron.x86_64                1.4.11-17.el7                   @base      
+cronolog.x86_64                      1.6.2-14.el7                    @epel      
+crontabs.noarch                      1.11-6.20121102git.el7          @anaconda  
+cryptsetup.x86_64                    1.7.4-3.el7                     @base      
+cryptsetup-libs.x86_64               1.7.4-3.el7                     @base      
+cscope.x86_64                        15.8-10.el7                     @base      
+ctags.x86_64                         5.8-13.el7                      @base      
+cups-client.x86_64                   1:1.6.3-29.el7                  @base      
+cups-libs.x86_64                     1:1.6.3-29.el7                  @base      
+curl.x86_64                          7.29.0-42.el7                   @base      
+cyrus-sasl.x86_64                    2.1.26-21.el7                   @base      
+cyrus-sasl-devel.x86_64              2.1.26-21.el7                   @base      
+cyrus-sasl-lib.x86_64                2.1.26-21.el7                   @base      
+cyrus-sasl-plain.x86_64              2.1.26-21.el7                   @base      
+dbus.x86_64                          1:1.6.12-17.el7                 @anaconda  
+dbus-glib.x86_64                     0.100-7.el7                     @anaconda  
+dbus-libs.x86_64                     1:1.6.12-17.el7                 @anaconda  
+dbus-python.x86_64                   1.1.1-9.el7                     @anaconda  
+dejavu-fonts-common.noarch           2.33-6.el7                      @base      
+dejavu-sans-fonts.noarch             2.33-6.el7                      @base      
+dejavu-sans-mono-fonts.noarch        2.33-6.el7                      @base      
+desktop-file-utils.x86_64            0.23-1.el7                      @base      
+device-mapper.x86_64                 7:1.02.140-8.el7                @base      
+device-mapper-event.x86_64           7:1.02.140-8.el7                @base      
+device-mapper-event-libs.x86_64      7:1.02.140-8.el7                @base      
+device-mapper-libs.x86_64            7:1.02.140-8.el7                @base      
+device-mapper-persistent-data.x86_64 0.7.0-0.1.rc6.el7               @base      
+dhclient.x86_64                      12:4.2.5-58.el7.centos          @base      
+dhcp-common.x86_64                   12:4.2.5-58.el7.centos          @base      
+dhcp-libs.x86_64                     12:4.2.5-58.el7.centos          @base      
+diffstat.x86_64                      1.57-4.el7                      @base      
+diffutils.x86_64                     3.3-4.el7                       @anaconda  
+dmidecode.x86_64                     1:3.0-5.el7                     @base      
+dmraid.x86_64                        1.0.0.rc16-28.el7               @base      
+dmraid-events.x86_64                 1.0.0.rc16-28.el7               @base      
+dnsmasq.x86_64                       2.76-2.el7_4.2                  @updates   
+dosfstools.x86_64                    3.0.20-9.el7                    @base      
+doxygen.x86_64                       1:1.8.5-3.el7                   @base      
+dracut.x86_64                        033-502.el7                     @base      
+dracut-config-rescue.x86_64          033-502.el7                     @base      
+dracut-network.x86_64                033-502.el7                     @base      
+dstat.noarch                         0.7.2-12.el7                    @base      
+dwz.x86_64                           0.11-3.el7                      @base      
+dyninst.x86_64                       9.3.1-1.el7                     @base      
+e2fsprogs.x86_64                     1.42.9-10.el7                   @base      
+e2fsprogs-libs.x86_64                1.42.9-10.el7                   @base      
+ebtables.x86_64                      2.0.10-15.el7                   @anaconda  
+ed.x86_64                            1.9-4.el7                       @base      
+efivar-libs.x86_64                   31-4.el7                        @base      
+elfutils.x86_64                      0.168-8.el7                     @base      
+elfutils-default-yama-scope.noarch   0.168-8.el7                     @base      
+elfutils-libelf.i686                 0.168-8.el7                     @base      
+elfutils-libelf.x86_64               0.168-8.el7                     @base      
+elfutils-libs.i686                   0.168-8.el7                     @base      
+elfutils-libs.x86_64                 0.168-8.el7                     @base      
+emacs-filesystem.noarch              1:24.3-20.el7_4                 @updates   
+epel-release.noarch                  7-11                            @epel      
+erlang.x86_64                        R16B-03.18.el7                  @epel      
+erlang-appmon.x86_64                 R16B-03.18.el7                  @epel      
+erlang-asn1.x86_64                   R16B-03.18.el7                  @epel      
+erlang-common_test.x86_64            R16B-03.18.el7                  @epel      
+erlang-compiler.x86_64               R16B-03.18.el7                  @epel      
+erlang-cosEvent.x86_64               R16B-03.18.el7                  @epel      
+erlang-cosEventDomain.x86_64         R16B-03.18.el7                  @epel      
+erlang-cosFileTransfer.x86_64        R16B-03.18.el7                  @epel      
+erlang-cosNotification.x86_64        R16B-03.18.el7                  @epel      
+erlang-cosProperty.x86_64            R16B-03.18.el7                  @epel      
+erlang-cosTime.x86_64                R16B-03.18.el7                  @epel      
+erlang-cosTransactions.x86_64        R16B-03.18.el7                  @epel      
+erlang-crypto.x86_64                 R16B-03.18.el7                  @epel      
+erlang-debugger.x86_64               R16B-03.18.el7                  @epel      
+erlang-dialyzer.x86_64               R16B-03.18.el7                  @epel      
+erlang-diameter.x86_64               R16B-03.18.el7                  @epel      
+erlang-edoc.x86_64                   R16B-03.18.el7                  @epel      
+erlang-eldap.x86_64                  R16B-03.18.el7                  @epel      
+erlang-erl_docgen.x86_64             R16B-03.18.el7                  @epel      
+erlang-erl_interface.x86_64          R16B-03.18.el7                  @epel      
+erlang-erts.x86_64                   R16B-03.18.el7                  @epel      
+erlang-et.x86_64                     R16B-03.18.el7                  @epel      
+erlang-eunit.x86_64                  R16B-03.18.el7                  @epel      
+erlang-examples.x86_64               R16B-03.18.el7                  @epel      
+erlang-gs.x86_64                     R16B-03.18.el7                  @epel      
+erlang-hipe.x86_64                   R16B-03.18.el7                  @epel      
+erlang-ic.x86_64                     R16B-03.18.el7                  @epel      
+erlang-inets.x86_64                  R16B-03.18.el7                  @epel      
+erlang-jinterface.x86_64             R16B-03.18.el7                  @epel      
+erlang-kernel.x86_64                 R16B-03.18.el7                  @epel      
+erlang-megaco.x86_64                 R16B-03.18.el7                  @epel      
+erlang-mnesia.x86_64                 R16B-03.18.el7                  @epel      
+erlang-observer.x86_64               R16B-03.18.el7                  @epel      
+erlang-odbc.x86_64                   R16B-03.18.el7                  @epel      
+erlang-orber.x86_64                  R16B-03.18.el7                  @epel      
+erlang-os_mon.x86_64                 R16B-03.18.el7                  @epel      
+erlang-otp_mibs.x86_64               R16B-03.18.el7                  @epel      
+erlang-parsetools.x86_64             R16B-03.18.el7                  @epel      
+erlang-percept.x86_64                R16B-03.18.el7                  @epel      
+erlang-pman.x86_64                   R16B-03.18.el7                  @epel      
+erlang-public_key.x86_64             R16B-03.18.el7                  @epel      
+erlang-reltool.x86_64                R16B-03.18.el7                  @epel      
+erlang-runtime_tools.x86_64          R16B-03.18.el7                  @epel      
+erlang-sasl.x86_64                   R16B-03.18.el7                  @epel      
+erlang-snmp.x86_64                   R16B-03.18.el7                  @epel      
+erlang-ssh.x86_64                    R16B-03.18.el7                  @epel      
+erlang-ssl.x86_64                    R16B-03.18.el7                  @epel      
+erlang-stdlib.x86_64                 R16B-03.18.el7                  @epel      
+erlang-syntax_tools.x86_64           R16B-03.18.el7                  @epel      
+erlang-test_server.x86_64            R16B-03.18.el7                  @epel      
+erlang-toolbar.x86_64                R16B-03.18.el7                  @epel      
+erlang-tools.x86_64                  R16B-03.18.el7                  @epel      
+erlang-tv.x86_64                     R16B-03.18.el7                  @epel      
+erlang-typer.x86_64                  R16B-03.18.el7                  @epel      
+erlang-webtool.x86_64                R16B-03.18.el7                  @epel      
+erlang-wx.x86_64                     R16B-03.18.el7                  @epel      
+erlang-xmerl.x86_64                  R16B-03.18.el7                  @epel      
+ethtool.x86_64                       2:4.8-1.el7                     @base      
+expat.x86_64                         2.1.0-10.el7_3                  @updates   
+expat-devel.x86_64                   2.1.0-10.el7_3                  @base      
+expect.x86_64                        5.45-14.el7_1                   @base      
+file.x86_64                          5.11-33.el7                     @anaconda  
+file-libs.x86_64                     5.11-33.el7                     @anaconda  
+filesystem.x86_64                    3.2-21.el7                      @anaconda  
+findutils.x86_64                     1:4.5.11-5.el7                  @anaconda  
+fio.x86_64                           2.2.8-2.el7                     @epel      
+fipscheck.x86_64                     1.4.1-6.el7                     @base      
+fipscheck-lib.x86_64                 1.4.1-6.el7                     @base      
+firewalld.noarch                     0.4.4.4-6.el7                   @base      
+firewalld-filesystem.noarch          0.4.4.4-6.el7                   @base      
+flex.x86_64                          2.5.37-3.el7                    @base      
+fontconfig.x86_64                    2.10.95-11.el7                  @base      
+fontpackages-filesystem.noarch       1.44-8.el7                      @base      
+fprintd.x86_64                       0.5.0-4.0.el7_0                 @base      
+fprintd-pam.x86_64                   0.5.0-4.0.el7_0                 @base      
+freetype.x86_64                      2.4.11-15.el7                   @base      
+ftp.x86_64                           0.17-67.el7                     @base      
+fxload.x86_64                        2002_04_11-16.el7               @anaconda  
+gawk.x86_64                          4.0.2-4.el7_3.1                 @base      
+gcc.x86_64                           4.8.5-16.el7                    @base      
+gcc-c++.x86_64                       4.8.5-16.el7                    @base      
+gcc-gfortran.x86_64                  4.8.5-16.el7                    @base      
+gd.x86_64                            2.0.35-26.el7                   @base      
+gd-last.x86_64                       2.2.5-1.el7.remi                @remi-safe 
+gdb.x86_64                           7.6.1-100.el7                   @base      
+gdbm.x86_64                          1.10-8.el7                      @anaconda  
+gdisk.x86_64                         0.8.6-5.el7                     @base      
+gdk-pixbuf2.x86_64                   2.36.5-1.el7                    @base      
+gettext.x86_64                       0.19.8.1-2.el7                  @base      
+gettext-common-devel.noarch          0.19.8.1-2.el7                  @base      
+gettext-devel.x86_64                 0.19.8.1-2.el7                  @base      
+gettext-libs.x86_64                  0.19.8.1-2.el7                  @base      
+ghostscript.x86_64                   9.07-28.el7_4.2                 @updates   
+ghostscript-fonts.noarch             5.50-32.el7                     @base      
+git.x86_64                           1.8.3.1-12.el7_4                @updates   
+glib-networking.x86_64               2.50.0-1.el7                    @base      
+glib2.x86_64                         2.50.3-3.el7                    @base      
+glibc.i686                           2.17-196.el7                    @base      
+glibc.x86_64                         2.17-196.el7                    @base      
+glibc-common.x86_64                  2.17-196.el7                    @base      
+glibc-devel.x86_64                   2.17-196.el7                    @base      
+glibc-headers.x86_64                 2.17-196.el7                    @base      
+gmp.x86_64                           1:6.0.0-15.el7                  @base      
+gnupg2.x86_64                        2.0.22-4.el7                    @anaconda  
+gnuplot.x86_64                       4.6.2-3.el7                     @base      
+gnuplot-common.x86_64                4.6.2-3.el7                     @base      
+gnutls.x86_64                        3.3.26-9.el7                    @base      
+gobject-introspection.x86_64         1.50.0-1.el7                    @base      
+gpgme.x86_64                         1.3.2-5.el7                     @anaconda  
+gpm-libs.x86_64                      1.20.7-5.el7                    @base      
+graphite2.x86_64                     1.3.10-1.el7_3                  @updates   
+graphviz.x86_64                      2.30.1-19.el7                   @base      
+grep.x86_64                          2.20-3.el7                      @base      
+groff-base.x86_64                    1.22.2-8.el7                    @anaconda  
+grub2.x86_64                         1:2.02-0.65.el7.centos.2        @updates   
+grub2-common.noarch                  1:2.02-0.65.el7.centos.2        @updates   
+grub2-pc.x86_64                      1:2.02-0.65.el7.centos.2        @updates   
+grub2-pc-modules.noarch              1:2.02-0.65.el7.centos.2        @updates   
+grub2-tools.x86_64                   1:2.02-0.65.el7.centos.2        @updates   
+grub2-tools-extra.x86_64             1:2.02-0.65.el7.centos.2        @updates   
+grub2-tools-minimal.x86_64           1:2.02-0.65.el7.centos.2        @updates   
+grubby.x86_64                        8.28-23.el7                     @base      
+gsettings-desktop-schemas.x86_64     3.22.0-1.el7                    @base      
+gtk-update-icon-cache.x86_64         3.22.10-4.el7                   @base      
+gtk2.x86_64                          2.24.31-1.el7                   @base      
+gzip.x86_64                          1.5-9.el7                       @base      
+hardlink.x86_64                      1:1.0-19.el7                    @anaconda  
+harfbuzz.x86_64                      1.3.2-1.el7                     @base      
+hicolor-icon-theme.noarch            0.12-7.el7                      @base      
+hostname.x86_64                      3.13-3.el7                      @anaconda  
+htop.x86_64                          2.0.2-1.el7                     @epel      
+httpd.x86_64                         2.4.6-67.el7.centos.6           @updates   
+httpd-devel.x86_64                   2.4.6-67.el7.centos.6           @updates   
+httpd-tools.x86_64                   2.4.6-67.el7.centos.6           @updates   
+hunspell.x86_64                      1.3.2-15.el7                    @base      
+hunspell-en.noarch                   0.20121024-6.el7                @base      
+hunspell-en-GB.noarch                0.20121024-6.el7                @base      
+hunspell-en-US.noarch                0.20121024-6.el7                @base      
+hwdata.x86_64                        0.252-8.6.el7                   @base      
+indent.x86_64                        2.2.11-13.el7                   @base      
+info.x86_64                          5.1-4.el7                       @anaconda  
+initscripts.x86_64                   9.49.39-1.el7                   @base      
+intltool.noarch                      0.50.2-7.el7                    @base      
+iotop.noarch                         0.6-2.el7                       @base      
+iproute.x86_64                       3.10.0-87.el7                   @base      
+iprutils.x86_64                      2.4.14.1-1.el7                  @base      
+ipset.x86_64                         6.29-1.el7                      @base      
+ipset-libs.x86_64                    6.29-1.el7                      @base      
+iptables.x86_64                      1.4.21-18.2.el7_4               @updates   
+iptables-services.x86_64             1.4.21-18.2.el7_4               @updates   
+iputils.x86_64                       20160308-10.el7                 @base      
+irqbalance.x86_64                    3:1.0.7-10.el7                  @base      
+ivtv-firmware.noarch                 2:20080701-26.el7               @anaconda  
+iw.x86_64                            4.3-1.el7                       @base      
+iwl100-firmware.noarch               39.31.5.1-56.el7                @base      
+iwl1000-firmware.noarch              1:39.31.5.1-56.el7              @base      
+iwl105-firmware.noarch               18.168.6.1-56.el7               @base      
+iwl135-firmware.noarch               18.168.6.1-56.el7               @base      
+iwl2000-firmware.noarch              18.168.6.1-56.el7               @base      
+iwl2030-firmware.noarch              18.168.6.1-56.el7               @base      
+iwl3160-firmware.noarch              22.0.7.0-56.el7                 @base      
+iwl3945-firmware.noarch              15.32.2.9-56.el7                @base      
+iwl4965-firmware.noarch              228.61.2.24-56.el7              @base      
+iwl5000-firmware.noarch              8.83.5.1_1-56.el7               @base      
+iwl5150-firmware.noarch              8.24.2.2-56.el7                 @base      
+iwl6000-firmware.noarch              9.221.4.1-56.el7                @base      
+iwl6000g2a-firmware.noarch           17.168.5.3-56.el7               @base      
+iwl6000g2b-firmware.noarch           17.168.5.2-56.el7               @base      
+iwl6050-firmware.noarch              41.28.5.1-56.el7                @base      
+iwl7260-firmware.noarch              22.0.7.0-56.el7                 @base      
+iwl7265-firmware.noarch              22.0.7.0-56.el7                 @base      
+jansson.x86_64                       2.10-1.el7                      @base      
+jasper-libs.x86_64                   1.900.1-31.el7                  @base      
+jbigkit-libs.x86_64                  2.0-11.el7                      @base      
+json-c.x86_64                        0.11-4.el7_0                    @anaconda  
+kbd.x86_64                           1.15.5-13.el7                   @base      
+kbd-legacy.noarch                    1.15.5-13.el7                   @base      
+kbd-misc.noarch                      1.15.5-13.el7                   @base      
+kernel.x86_64                        3.10.0-514.el7                  @anaconda  
+kernel.x86_64                        3.10.0-514.6.1.el7              @updates   
+kernel.x86_64                        3.10.0-693.2.2.el7              @updates   
+kernel.x86_64                        3.10.0-693.5.2.el7              @updates   
+kernel-debug-devel.x86_64            3.10.0-693.5.2.el7              @updates   
+kernel-headers.x86_64                3.10.0-693.5.2.el7              @updates   
+kernel-tools.x86_64                  3.10.0-693.5.2.el7              @updates   
+kernel-tools-libs.x86_64             3.10.0-693.5.2.el7              @updates   
+kexec-tools.x86_64                   2.0.14-17.2.el7                 @updates   
+keyutils-libs.x86_64                 1.5.8-3.el7                     @anaconda  
+kmod.x86_64                          20-15.el7_4.4                   @updates   
+kmod-libs.x86_64                     20-15.el7_4.4                   @updates   
+kpartx.x86_64                        0.4.9-111.el7                   @base      
+kpatch.noarch                        0.4.0-1.el7                     @base      
+krb5-libs.x86_64                     1.15.1-8.el7                    @base      
+langtable.noarch                     0.0.31-3.el7                    @base      
+langtable-data.noarch                0.0.31-3.el7                    @base      
+langtable-python.noarch              0.0.31-3.el7                    @base      
+lcms2.x86_64                         2.6-3.el7                       @base      
+ldns.x86_64                          1.6.16-10.el7                   @base      
+ledmon.x86_64                        0.80-2.el7                      @base      
+less.x86_64                          458-9.el7                       @anaconda  
+libICE.x86_64                        1.0.9-9.el7                     @base      
+libSM.x86_64                         1.2.2-2.el7                     @base      
+libX11.x86_64                        1.6.5-1.el7                     @base      
+libX11-common.noarch                 1.6.5-1.el7                     @base      
+libXau.x86_64                        1.0.8-2.1.el7                   @base      
+libXaw.x86_64                        1.0.13-4.el7                    @base      
+libXcomposite.x86_64                 0.4.4-4.1.el7                   @base      
+libXcursor.x86_64                    1.1.14-8.el7                    @base      
+libXdamage.x86_64                    1.1.4-4.1.el7                   @base      
+libXext.x86_64                       1.3.3-3.el7                     @base      
+libXfixes.x86_64                     5.0.3-1.el7                     @base      
+libXfont.x86_64                      1.5.2-1.el7                     @base      
+libXft.x86_64                        2.3.2-2.el7                     @base      
+libXi.x86_64                         1.7.9-1.el7                     @base      
+libXinerama.x86_64                   1.1.3-2.1.el7                   @base      
+libXmu.x86_64                        1.1.2-2.el7                     @base      
+libXpm.x86_64                        3.5.12-1.el7                    @base      
+libXrandr.x86_64                     1.5.1-2.el7                     @base      
+libXrender.x86_64                    0.9.10-1.el7                    @base      
+libXt.x86_64                         1.1.5-3.el7                     @base      
+libXxf86misc.x86_64                  1.0.3-7.1.el7                   @base      
+libXxf86vm.x86_64                    1.1.4-1.el7                     @base      
+libacl.x86_64                        2.2.51-12.el7                   @anaconda  
+libaio.x86_64                        0.3.109-13.el7                  @base      
+libassuan.x86_64                     2.1.0-3.el7                     @anaconda  
+libattr.i686                         2.4.46-12.el7                   @base      
+libattr.x86_64                       2.4.46-12.el7                   @anaconda  
+libblkid.x86_64                      2.23.2-43.el7                   @base      
+libcap.i686                          2.22-9.el7                      @base      
+libcap.x86_64                        2.22-9.el7                      @base      
+libcap-ng.i686                       0.7.5-4.el7                     @base      
+libcap-ng.x86_64                     0.7.5-4.el7                     @anaconda  
+libcgroup.x86_64                     0.41-13.el7                     @base      
+libcom_err.x86_64                    1.42.9-10.el7                   @base      
+libconfig.x86_64                     1.4.9-5.el7                     @base      
+libcroco.x86_64                      0.6.11-1.el7                    @base      
+libcurl.x86_64                       7.29.0-42.el7                   @base      
+libdaemon.x86_64                     0.14-7.el7                      @anaconda  
+libdb.i686                           5.3.21-20.el7                   @base      
+libdb.x86_64                         5.3.21-20.el7                   @base      
+libdb-devel.x86_64                   5.3.21-20.el7                   @base      
+libdb-utils.x86_64                   5.3.21-20.el7                   @base      
+libdrm.x86_64                        2.4.74-1.el7                    @base      
+libdwarf.x86_64                      20130207-4.el7                  @base      
+libedit.x86_64                       3.0-12.20121213cvs.el7          @anaconda  
+libestr.x86_64                       0.1.9-2.el7                     @anaconda  
+libevent.x86_64                      2.0.21-4.el7                    @base      
+libfastjson.x86_64                   0.99.4-2.el7                    @base      
+libffi.x86_64                        3.0.13-18.el7                   @anaconda  
+libfontenc.x86_64                    1.1.3-3.el7                     @base      
+libfprint.x86_64                     0.5.0-4.el7                     @base      
+libgcc.i686                          4.8.5-16.el7                    @base      
+libgcc.x86_64                        4.8.5-16.el7                    @base      
+libgcrypt.i686                       1.5.3-14.el7                    @base      
+libgcrypt.x86_64                     1.5.3-14.el7                    @base      
+libgfortran.x86_64                   4.8.5-16.el7                    @base      
+libgnome-keyring.x86_64              3.12.0-1.el7                    @base      
+libgomp.x86_64                       4.8.5-16.el7                    @base      
+libgpg-error.i686                    1.12-3.el7                      @base      
+libgpg-error.x86_64                  1.12-3.el7                      @anaconda  
+libgudev1.x86_64                     219-42.el7_4.4                  @updates   
+libibverbs.x86_64                    13-7.el7                        @base      
+libicu.x86_64                        50.1.2-15.el7                   @base      
+libidn.x86_64                        1.28-4.el7                      @anaconda  
+libjpeg-turbo.x86_64                 1.2.90-5.el7                    @base      
+libmcrypt.x86_64                     2.5.8-13.el7                    @epel      
+libmnl.x86_64                        1.0.3-7.el7                     @anaconda  
+libmodman.x86_64                     2.0.1-8.el7                     @anaconda  
+libmount.x86_64                      2.23.2-43.el7                   @base      
+libmpc.x86_64                        1.0.1-3.el7                     @base      
+libndp.x86_64                        1.2-7.el7                       @anaconda  
+libnetfilter_conntrack.x86_64        1.0.6-1.el7_3                   @base      
+libnfnetlink.x86_64                  1.0.1-4.el7                     @anaconda  
+libnl.x86_64                         1.1.4-3.el7                     @base      
+libnl3.x86_64                        3.2.28-4.el7                    @base      
+libnl3-cli.x86_64                    3.2.28-4.el7                    @base      
+libpcap.x86_64                       14:1.5.3-9.el7                  @base      
+libpciaccess.x86_64                  0.13.4-3.el7_3                  @updates   
+libpipeline.x86_64                   1.2.3-3.el7                     @anaconda  
+libpng.x86_64                        2:1.5.13-7.el7_2                @base      
+libproxy.x86_64                      0.4.11-10.el7                   @anaconda  
+libpwquality.x86_64                  1.2.3-4.el7                     @anaconda  
+libquadmath.x86_64                   4.8.5-16.el7                    @base      
+libquadmath-devel.x86_64             4.8.5-16.el7                    @base      
+librados2.x86_64                     1:0.94.5-2.el7                  @base      
+librbd1.x86_64                       1:0.94.5-2.el7                  @base      
+librdmacm.x86_64                     13-7.el7                        @base      
+libreport.x86_64                     2.1.11-38.el7.centos            @base      
+libreport-centos.x86_64              2.1.11-38.el7.centos            @base      
+libreport-cli.x86_64                 2.1.11-38.el7.centos            @base      
+libreport-filesystem.x86_64          2.1.11-38.el7.centos            @base      
+libreport-plugin-mailx.x86_64        2.1.11-38.el7.centos            @base      
+libreport-plugin-mantisbt.x86_64     2.1.11-38.el7.centos            @base      
+libreport-plugin-rhtsupport.x86_64   2.1.11-38.el7.centos            @base      
+libreport-plugin-ureport.x86_64      2.1.11-38.el7.centos            @base      
+libreport-python.x86_64              2.1.11-38.el7.centos            @base      
+libreport-web.x86_64                 2.1.11-38.el7.centos            @base      
+librsvg2.x86_64                      2.40.16-1.el7                   @base      
+libseccomp.x86_64                    2.3.1-3.el7                     @base      
+libselinux.i686                      2.5-11.el7                      @base      
+libselinux.x86_64                    2.5-11.el7                      @base      
+libselinux-python.x86_64             2.5-11.el7                      @base      
+libselinux-utils.x86_64              2.5-11.el7                      @base      
+libsemanage.x86_64                   2.5-8.el7                       @base      
+libsemanage-python.x86_64            2.5-8.el7                       @base      
+libsepol.i686                        2.5-6.el7                       @base      
+libsepol.x86_64                      2.5-6.el7                       @anaconda  
+libsoup.x86_64                       2.56.0-4.el7_4                  @updates   
+libss.x86_64                         1.42.9-10.el7                   @base      
+libssh2.x86_64                       1.4.3-10.el7_2.1                @anaconda  
+libsss_idmap.x86_64                  1.15.2-50.el7_4.6               @updates   
+libsss_nss_idmap.x86_64              1.15.2-50.el7_4.6               @updates   
+libstdc++.i686                       4.8.5-16.el7                    @base      
+libstdc++.x86_64                     4.8.5-16.el7                    @base      
+libstdc++-devel.x86_64               4.8.5-16.el7                    @base      
+libstoragemgmt.x86_64                1.4.0-3.el7                     @base      
+libstoragemgmt-python.noarch         1.4.0-3.el7                     @base      
+libstoragemgmt-python-clibs.x86_64   1.4.0-3.el7                     @base      
+libsysfs.x86_64                      2.1.0-16.el7                    @anaconda  
+libtar.x86_64                        1.2.11-29.el7                   @base      
+libtasn1.x86_64                      4.10-1.el7                      @base      
+libteam.x86_64                       1.25-5.el7                      @base      
+libthai.x86_64                       0.1.14-9.el7                    @base      
+libtiff.x86_64                       4.0.3-27.el7_3                  @updates   
+libtirpc.x86_64                      0.2.4-0.10.el7                  @base      
+libtool.x86_64                       2.4.2-22.el7_3                  @base      
+libtool-ltdl.x86_64                  2.4.2-22.el7_3                  @base      
+libunistring.x86_64                  0.9.3-9.el7                     @anaconda  
+libusbx.x86_64                       1.0.20-1.el7                    @base      
+libuser.x86_64                       0.60-7.el7_1                    @anaconda  
+libutempter.x86_64                   1.1.6-4.el7                     @anaconda  
+libuuid.x86_64                       2.23.2-43.el7                   @base      
+libverto.x86_64                      0.2.5-4.el7                     @anaconda  
+libwebp.x86_64                       0.3.0-7.el7                     @base      
+libxcb.x86_64                        1.12-1.el7                      @base      
+libxml2.x86_64                       2.9.1-6.el7_2.3                 @anaconda  
+libxml2-devel.x86_64                 2.9.1-6.el7_2.3                 @base      
+libxml2-python.x86_64                2.9.1-6.el7_2.3                 @base      
+libxshmfence.x86_64                  1.2-1.el7                       @base      
+libxslt.x86_64                       1.1.28-5.el7                    @base      
+libyaml.x86_64                       0.1.4-11.el7_0                  @base      
+libzip5.x86_64                       1.3.0-1.el7.remi                @remi-safe 
+linux-firmware.noarch                20170606-56.gitc990aae.el7      @base      
+lksctp-tools.x86_64                  1.0.17-2.el7                    @base      
+lm_sensors-libs.x86_64               3.4.0-4.20160601gitf9185e5.el7  @base      
+logrotate.x86_64                     3.8.6-14.el7                    @base      
+logwatch.noarch                      7.4.0-32.20130522svn140.el7     @base      
+lsof.x86_64                          4.87-4.el7                      @base      
+lsscsi.x86_64                        0.27-6.el7                      @base      
+lua.x86_64                           5.1.4-15.el7                    @anaconda  
+lvm2.x86_64                          7:2.02.171-8.el7                @base      
+lvm2-libs.x86_64                     7:2.02.171-8.el7                @base      
+lyx-fonts.noarch                     2.2.3-1.el7                     @epel      
+lzo.x86_64                           2.06-8.el7                      @anaconda  
+m4.x86_64                            1.4.16-10.el7                   @base      
+mailcap.noarch                       2.1.41-2.el7                    @base      
+mailx.x86_64                         12.5-16.el7                     @base      
+make.x86_64                          1:3.82-23.el7                   @anaconda  
+man-db.x86_64                        2.6.3-9.el7                     @anaconda  
+man-pages.noarch                     3.53-5.el7                      @base      
+man-pages-overrides.x86_64           7.4.3-1.el7                     @base      
+mdadm.x86_64                         4.0-5.el7                       @base      
+mesa-libEGL.x86_64                   17.0.1-6.20170307.el7           @base      
+mesa-libGL.x86_64                    17.0.1-6.20170307.el7           @base      
+mesa-libGLU.x86_64                   9.0.0-4.el7                     @base      
+mesa-libgbm.x86_64                   17.0.1-6.20170307.el7           @base      
+mesa-libglapi.x86_64                 17.0.1-6.20170307.el7           @base      
+microcode_ctl.x86_64                 2:2.1-22.el7                    @base      
+mlocate.x86_64                       0.26-6.el7                      @base      
+mod_ssl.x86_64                       1:2.4.6-67.el7.centos.6         @updates   
+mokutil.x86_64                       12-1.el7.centos                 @base      
+mozjs17.x86_64                       17.0.0-19.el7                   @anaconda  
+mpfr.x86_64                          3.1.1-4.el7                     @base      
+mtr.x86_64                           2:0.85-7.el7                    @base      
+mysql-community-client.x86_64        5.7.19-1.el7                    @mysql57-community
+mysql-community-client.x86_64        5.7.20-1.el7                    installed  
+mysql-community-common.x86_64        5.7.19-1.el7                    @mysql57-community
+mysql-community-common.x86_64        5.7.20-1.el7                    installed  
+mysql-community-libs.x86_64          5.7.19-1.el7                    @mysql57-community
+mysql-community-libs.x86_64          5.7.20-1.el7                    installed  
+mysql-community-libs-compat.x86_64   5.7.20-1.el7                    @mysql57-community
+mysql-community-server.x86_64        5.7.19-1.el7                    @mysql57-community
+mysql-community-server.x86_64        5.7.20-1.el7                    installed  
+mysql57-community-release.noarch     el7-10                          @mysql57-community
+nano.x86_64                          2.3.1-10.el7                    @base      
+ncurses.x86_64                       5.9-14.20130511.el7_4           @updates   
+ncurses-base.noarch                  5.9-14.20130511.el7_4           @updates   
+ncurses-devel.x86_64                 5.9-14.20130511.el7_4           @updates   
+ncurses-libs.x86_64                  5.9-14.20130511.el7_4           @updates   
+neon.x86_64                          0.30.0-3.el7                    @base      
+net-tools.x86_64                     2.0-0.22.20131004git.el7        @base      
+nettle.x86_64                        2.7.1-8.el7                     @anaconda  
+newt.x86_64                          0.52.15-4.el7                   @anaconda  
+newt-python.x86_64                   0.52.15-4.el7                   @anaconda  
+nkf.x86_64                           1:2.1.3-5.el7                   @epel      
+nmap.x86_64                          2:6.40-7.el7                    @base      
+nmap-ncat.x86_64                     2:6.40-7.el7                    @base      
+nspr.x86_64                          4.13.1-1.0.el7_3                @base      
+nss.x86_64                           3.28.4-15.el7_4                 @updates   
+nss-pem.x86_64                       1.0.3-4.el7                     @base      
+nss-softokn.x86_64                   3.28.3-8.el7_4                  @updates   
+nss-softokn-freebl.i686              3.28.3-8.el7_4                  @updates   
+nss-softokn-freebl.x86_64            3.28.3-8.el7_4                  @updates   
+nss-sysinit.x86_64                   3.28.4-15.el7_4                 @updates   
+nss-tools.x86_64                     3.28.4-15.el7_4                 @updates   
+nss-util.x86_64                      3.28.4-3.el7                    @base      
+ntp.x86_64                           4.2.6p5-25.el7.centos.2         @base      
+ntpdate.x86_64                       4.2.6p5-25.el7.centos.2         @base      
+ntsysv.x86_64                        1.7.4-1.el7                     @base      
+numactl-libs.x86_64                  2.0.9-6.el7_2                   @anaconda  
+openldap.x86_64                      2.4.44-5.el7                    @base      
+openldap-devel.x86_64                2.4.44-5.el7                    @base      
+openssh.x86_64                       7.4p1-13.el7_4                  @updates   
+openssh-clients.x86_64               7.4p1-13.el7_4                  @updates   
+openssh-server.x86_64                7.4p1-13.el7_4                  @updates   
+openssl.x86_64                       1:1.0.2k-8.el7                  @base      
+openssl-libs.x86_64                  1:1.0.2k-8.el7                  @base      
+os-prober.x86_64                     1.58-9.el7                      @anaconda  
+p11-kit.x86_64                       0.23.5-3.el7                    @base      
+p11-kit-trust.x86_64                 0.23.5-3.el7                    @base      
+pakchois.x86_64                      0.4-10.el7                      @base      
+pam.i686                             1.1.8-18.el7                    @base      
+pam.x86_64                           1.1.8-18.el7                    @anaconda  
+pango.x86_64                         1.40.4-1.el7                    @base      
+parted.x86_64                        3.1-28.el7                      @anaconda  
+passwd.x86_64                        0.79-4.el7                      @anaconda  
+patch.x86_64                         2.7.1-8.el7                     @base      
+patchutils.x86_64                    0.3.3-4.el7                     @base      
+pciutils.x86_64                      3.5.1-2.el7                     @base      
+pciutils-libs.x86_64                 3.5.1-2.el7                     @base      
+pcre.i686                            8.32-17.el7                     @base      
+pcre.x86_64                          8.32-17.el7                     @base      
+pcre-devel.x86_64                    8.32-17.el7                     @base      
+perl.x86_64                          4:5.16.3-292.el7                @base      
+perl-AppConfig.noarch                1.66-20.el7                     @base      
+perl-Business-ISBN.noarch            2.06-2.el7                      @base      
+perl-Business-ISBN-Data.noarch       20120719.001-2.el7              @base      
+perl-CGI.noarch                      3.63-4.el7                      @base      
+perl-Carp.noarch                     1.26-244.el7                    @base      
+perl-Compress-Raw-Bzip2.x86_64       2.061-3.el7                     @base      
+perl-Compress-Raw-Zlib.x86_64        1:2.061-4.el7                   @base      
+perl-Data-Dumper.x86_64              2.145-3.el7                     @base      
+perl-Date-Manip.noarch               6.41-2.el7                      @base      
+perl-Digest.noarch                   1.17-245.el7                    @base      
+perl-Digest-MD5.x86_64               2.52-3.el7                      @base      
+perl-Encode.x86_64                   2.51-7.el7                      @base      
+perl-Encode-Locale.noarch            1.03-5.el7                      @base      
+perl-Error.noarch                    1:0.17020-2.el7                 @base      
+perl-Exporter.noarch                 5.68-3.el7                      @base      
+perl-FCGI.x86_64                     1:0.74-8.el7                    @base      
+perl-File-Listing.noarch             6.04-7.el7                      @base      
+perl-File-Path.noarch                2.09-2.el7                      @base      
+perl-File-Temp.noarch                0.23.01-3.el7                   @base      
+perl-Filter.x86_64                   1.49-3.el7                      @base      
+perl-Getopt-Long.noarch              2.40-2.el7                      @base      
+perl-Git.noarch                      1.8.3.1-12.el7_4                @updates   
+perl-HTML-Parser.x86_64              3.71-4.el7                      @base      
+perl-HTML-Tagset.noarch              3.20-15.el7                     @base      
+perl-HTTP-Cookies.noarch             6.01-5.el7                      @base      
+perl-HTTP-Daemon.noarch              6.01-5.el7                      @base      
+perl-HTTP-Date.noarch                6.02-8.el7                      @base      
+perl-HTTP-Message.noarch             6.06-6.el7                      @base      
+perl-HTTP-Negotiate.noarch           6.01-5.el7                      @base      
+perl-HTTP-Tiny.noarch                0.033-3.el7                     @base      
+perl-IO-Compress.noarch              2.061-2.el7                     @base      
+perl-IO-HTML.noarch                  1.00-2.el7                      @base      
+perl-IO-Socket-IP.noarch             0.21-4.el7                      @base      
+perl-IO-Socket-SSL.noarch            1.94-6.el7                      @base      
+perl-Image-Base.noarch               1.07-23.el7                     @base      
+perl-Image-Info.noarch               1.33-3.el7                      @base      
+perl-Image-Xbm.noarch                1.08-21.el7                     @base      
+perl-Image-Xpm.noarch                1.09-21.el7                     @base      
+perl-JSON.noarch                     2.59-2.el7                      @base      
+perl-LWP-MediaTypes.noarch           6.02-2.el7                      @base      
+perl-Net-HTTP.noarch                 6.06-2.el7                      @base      
+perl-Net-LibIDN.x86_64               0.12-15.el7                     @base      
+perl-Net-SSLeay.x86_64               1.55-6.el7                      @base      
+perl-PathTools.x86_64                3.40-5.el7                      @base      
+perl-Pod-Escapes.noarch              1:1.04-292.el7                  @base      
+perl-Pod-POM.noarch                  0.27-10.el7                     @base      
+perl-Pod-Perldoc.noarch              3.20-4.el7                      @base      
+perl-Pod-Simple.noarch               1:3.28-4.el7                    @base      
+perl-Pod-Usage.noarch                1.63-3.el7                      @base      
+perl-Scalar-List-Utils.x86_64        1.27-248.el7                    @base      
+perl-Socket.x86_64                   2.010-4.el7                     @base      
+perl-Storable.x86_64                 2.45-3.el7                      @base      
+perl-Sys-CPU.x86_64                  0.54-4.el7                      @base      
+perl-Sys-MemInfo.x86_64              0.91-7.el7                      @base      
+perl-Template-Toolkit.x86_64         2.24-5.el7                      @base      
+perl-TermReadKey.x86_64              2.30-20.el7                     @base      
+perl-Test-Harness.noarch             3.28-3.el7                      @base      
+perl-Text-ParseWords.noarch          3.29-4.el7                      @base      
+perl-Thread-Queue.noarch             3.02-2.el7                      @base      
+perl-Time-HiRes.x86_64               4:1.9725-3.el7                  @base      
+perl-Time-Local.noarch               1.2300-2.el7                    @base      
+perl-TimeDate.noarch                 1:2.30-2.el7                    @base      
+perl-URI.noarch                      1.60-9.el7                      @base      
+perl-WWW-RobotRules.noarch           6.02-5.el7                      @base      
+perl-XML-LibXML.x86_64               1:2.0018-5.el7                  @base      
+perl-XML-NamespaceSupport.noarch     1.11-10.el7                     @base      
+perl-XML-Parser.x86_64               2.41-10.el7                     @base      
+perl-XML-SAX.noarch                  0.99-9.el7                      @base      
+perl-XML-SAX-Base.noarch             1.08-7.el7                      @base      
+perl-XML-Simple.noarch               2.20-5.el7                      @base      
+perl-constant.noarch                 1.27-2.el7                      @base      
+perl-libs.x86_64                     4:5.16.3-292.el7                @base      
+perl-libwww-perl.noarch              6.05-2.el7                      @base      
+perl-macros.x86_64                   4:5.16.3-292.el7                @base      
+perl-parent.noarch                   1:0.225-244.el7                 @base      
+perl-podlators.noarch                2.5.1-3.el7                     @base      
+perl-srpm-macros.noarch              1-8.el7                         @base      
+perl-threads.x86_64                  1.87-4.el7                      @base      
+perl-threads-shared.x86_64           1.43-6.el7                      @base      
+php.x86_64                           5.6.31-1.el7.remi               @remi-php56
+php-cli.x86_64                       5.6.31-1.el7.remi               @remi-php56
+php-common.x86_64                    5.6.31-1.el7.remi               @remi-php56
+php-devel.x86_64                     5.6.31-1.el7.remi               @remi-php56
+php-gd.x86_64                        5.6.31-1.el7.remi               @remi-php56
+php-mbstring.x86_64                  5.6.31-1.el7.remi               @remi-php56
+php-mcrypt.x86_64                    5.6.31-1.el7.remi               @remi-php56
+php-mysqlnd.x86_64                   5.6.31-1.el7.remi               @remi-php56
+php-opcache.x86_64                   5.6.31-1.el7.remi               @remi-php56
+php-pdo.x86_64                       5.6.31-1.el7.remi               @remi-php56
+php-pecl-apcu.x86_64                 4.0.11-2.el7.remi.5.6           @remi-php56
+php-pecl-jsonc.x86_64                1.3.10-2.el7.remi.5.6           @remi-php56
+php-pecl-jsonc-devel.x86_64          1.3.10-2.el7.remi.5.6           @remi-php56
+php-pecl-zip.x86_64                  1.15.1-1.el7.remi.5.6           @remi-php56
+php-xml.x86_64                       5.6.31-1.el7.remi               @remi-php56
+pinentry.x86_64                      0.8.1-17.el7                    @anaconda  
+pinfo.x86_64                         0.6.10-9.el7                    @base      
+pixman.x86_64                        0.34.0-1.el7                    @base      
+pkgconfig.x86_64                     1:0.27.1-4.el7                  @anaconda  
+plymouth.x86_64                      0.8.9-0.28.20140113.el7.centos  @base      
+plymouth-core-libs.x86_64            0.8.9-0.28.20140113.el7.centos  @base      
+plymouth-scripts.x86_64              0.8.9-0.28.20140113.el7.centos  @base      
+pm-utils.x86_64                      1.4.1-27.el7                    @base      
+policycoreutils.x86_64               2.5-17.1.el7                    @base      
+policycoreutils-python.x86_64        2.5-17.1.el7                    @base      
+polkit.x86_64                        0.112-12.el7_3                  @base      
+polkit-pkla-compat.x86_64            0.1-4.el7                       @anaconda  
+poppler-data.noarch                  0.4.6-3.el7                     @base      
+popt.x86_64                          1.13-16.el7                     @anaconda  
+postfix.x86_64                       2:2.10.1-6.el7                  @anaconda  
+ppp.x86_64                           2.4.5-33.el7                    @anaconda  
+procps-ng.x86_64                     3.3.10-16.el7                   @base      
+psacct.x86_64                        6.6.1-13.el7                    @base      
+psmisc.x86_64                        22.20-15.el7                    @base      
+pth.x86_64                           2.0.7-23.el7                    @anaconda  
+pygobject2.x86_64                    2.28.6-11.el7                   @base      
+pygpgme.x86_64                       0.3-9.el7                       @anaconda  
+pyliblzma.x86_64                     0.5.3-11.el7                    @anaconda  
+pyserial.noarch                      2.6-6.el7                       @base      
+python.x86_64                        2.7.5-58.el7                    @base      
+python-IPy.noarch                    0.75-6.el7                      @base      
+python-augeas.noarch                 0.5.0-2.el7                     @base      
+python-babel.noarch                  0.9.6-8.el7                     @base      
+python-backports.x86_64              1.0-8.el7                       @base      
+python-backports-ssl_match_hostname.noarch
+                                     3.4.0.2-4.el7                   @base      
+python-chardet.noarch                2.2.1-1.el7_1                   @base      
+python-cheetah.x86_64                2.4.4-5.el7.centos              @extras    
+python-configobj.noarch              4.7.2-7.el7                     @anaconda  
+python-decorator.noarch              3.4.0-3.el7                     @anaconda  
+python-dmidecode.x86_64              3.12.2-1.el7                    @base      
+python-firewall.noarch               0.4.4.4-6.el7                   @base      
+python-gobject-base.x86_64           3.22.0-1.el7                    @base      
+python-iniparse.noarch               0.4-9.el7                       @anaconda  
+python-jinja2.noarch                 2.7.2-2.el7                     @base      
+python-jsonpatch.noarch              1.2-4.el7                       @base      
+python-jsonpointer.noarch            1.9-2.el7                       @base      
+python-kitchen.noarch                1.1.1-5.el7                     @base      
+python-libs.x86_64                   2.7.5-58.el7                    @base      
+python-linux-procfs.noarch           0.4.9-3.el7                     @base      
+python-markdown.noarch               2.4.1-2.el7                     @epel      
+python-markupsafe.x86_64             0.11-10.el7                     @base      
+python-perf.x86_64                   3.10.0-693.5.2.el7              @updates   
+python-pillow.x86_64                 2.0.0-19.gitd1c6db8.el7         @base      
+python-prettytable.noarch            0.7.2-3.el7                     @base      
+python-pycurl.x86_64                 7.19.0-19.el7                   @anaconda  
+python-pygments.noarch               1.4-10.el7                      @base      
+python-pyudev.noarch                 0.15-9.el7                      @base      
+python-requests.noarch               2.6.0-1.el7_1                   @base      
+python-schedutils.x86_64             0.4-6.el7                       @base      
+python-setuptools.noarch             0.9.8-7.el7                     @base      
+python-six.noarch                    1.9.0-2.el7                     @base      
+python-slip.noarch                   0.4.0-2.el7                     @anaconda  
+python-slip-dbus.noarch              0.4.0-2.el7                     @anaconda  
+python-urlgrabber.noarch             3.10-8.el7                      @anaconda  
+python-urllib3.noarch                1.10.2-3.el7                    @base      
+python2-boto.noarch                  2.45.0-3.el7                    @epel      
+python2-pyasn1.noarch                0.1.9-7.el7                     @base      
+python2-rsa.noarch                   3.4.1-1.el7                     @epel      
+pyxattr.x86_64                       0.5.1-5.el7                     @anaconda  
+qemu-guest-agent.x86_64              10:2.8.0-2.el7                  @base      
+qrencode-libs.x86_64                 3.4.1-3.el7                     @anaconda  
+quota.x86_64                         1:4.01-14.el7                   @base      
+quota-nls.noarch                     1:4.01-14.el7                   @base      
+rcs.x86_64                           5.9.0-5.el7                     @base      
+rdate.x86_64                         1.4-25.el7                      @base      
+rdma-core.i686                       13-7.el7                        @base      
+rdma-core.x86_64                     13-7.el7                        @base      
+readline.x86_64                      6.2-10.el7                      @base      
+redhat-lsb-core.x86_64               4.1-27.el7.centos.1             @base      
+redhat-lsb-submod-security.x86_64    4.1-27.el7.centos.1             @base      
+redhat-rpm-config.noarch             9.1.0-76.el7.centos             @base      
+remi-release.noarch                  7.3-2.el7.remi                  installed  
+rfkill.x86_64                        0.4-9.el7                       @base      
+rng-tools.x86_64                     5-11.el7                        @base      
+rootfiles.noarch                     8.1-11.el7                      @anaconda  
+rpcbind.x86_64                       0.2.0-42.el7                    @base      
+rpm.x86_64                           4.11.3-25.el7                   @base      
+rpm-build.x86_64                     4.11.3-25.el7                   @base      
+rpm-build-libs.x86_64                4.11.3-25.el7                   @base      
+rpm-libs.x86_64                      4.11.3-25.el7                   @base      
+rpm-python.x86_64                    4.11.3-25.el7                   @base      
+rpm-sign.x86_64                      4.11.3-25.el7                   @base      
+rrdtool.x86_64                       1.4.8-9.el7                     @base      
+rrdtool-perl.x86_64                  1.4.8-9.el7                     @base      
+rsync.x86_64                         3.0.9-18.el7                    @base      
+rsyslog.x86_64                       8.24.0-12.el7                   @base      
+satyr.x86_64                         0.13-14.el7                     @base      
+scl-utils.x86_64                     20130529-18.el7_4               @updates   
+sed.x86_64                           4.2.2-5.el7                     @anaconda  
+selinux-policy.noarch                3.13.1-166.el7_4.5              @updates   
+selinux-policy-targeted.noarch       3.13.1-166.el7_4.5              @updates   
+setools-libs.x86_64                  3.3.8-1.1.el7                   @base      
+setserial.x86_64                     2.17-33.el7                     @base      
+setup.noarch                         2.8.71-7.el7                    @anaconda  
+setuptool.x86_64                     1.19.11-8.el7                   @base      
+sg3_utils-libs.x86_64                1.37-12.el7                     @base      
+sgpio.x86_64                         1.2.0.10-13.el7                 @base      
+shadow-utils.x86_64                  2:4.1.5.1-24.el7                @anaconda  
+shared-mime-info.x86_64              1.8-3.el7                       @base      
+slang.x86_64                         2.2.4-11.el7                    @anaconda  
+smartmontools.x86_64                 1:6.2-8.el7                     @base      
+snappy.x86_64                        1.1.0-3.el7                     @anaconda  
+sos.noarch                           3.4-6.el7.centos                @base      
+spax.x86_64                          1.5.2-13.el7                    @base      
+sqlite.x86_64                        3.7.17-8.el7                    @anaconda  
+sssd-client.x86_64                   1.15.2-50.el7_4.6               @updates   
+strace.x86_64                        4.12-4.el7                      @base      
+subversion.x86_64                    1.7.14-11.el7_4                 @updates   
+subversion-libs.x86_64               1.7.14-11.el7_4                 @updates   
+sudo.x86_64                          1.8.19p2-11.el7_4               @updates   
+swig.x86_64                          2.0.10-5.el7                    @base      
+sysstat.x86_64                       10.1.5-12.el7                   @base      
+systemd.x86_64                       219-42.el7_4.4                  @updates   
+systemd-libs.i686                    219-42.el7_4.4                  @updates   
+systemd-libs.x86_64                  219-42.el7_4.4                  @updates   
+systemd-python.x86_64                219-42.el7_4.4                  @updates   
+systemd-sysv.x86_64                  219-42.el7_4.4                  @updates   
+systemtap.x86_64                     3.1-3.el7                       @base      
+systemtap-client.x86_64              3.1-3.el7                       @base      
+systemtap-devel.x86_64               3.1-3.el7                       @base      
+systemtap-runtime.x86_64             3.1-3.el7                       @base      
+sysvinit-tools.x86_64                2.88-14.dsf.el7                 @anaconda  
+t1lib.x86_64                         5.1.2-14.el7                    @base      
+tar.x86_64                           2:1.26-32.el7                   @base      
+tcl.x86_64                           1:8.5.13-8.el7                  @base      
+tcp_wrappers.x86_64                  7.6-77.el7                      @base      
+tcp_wrappers-libs.x86_64             7.6-77.el7                      @anaconda  
+tcpdump.x86_64                       14:4.9.0-5.el7                  @base      
+tcsh.x86_64                          6.18.01-15.el7                  @base      
+td-agent.x86_64                      2.3.6-0.el7                     @treasuredata
+teamd.x86_64                         1.25-5.el7                      @base      
+telnet.x86_64                        1:0.17-64.el7                   @base      
+time.x86_64                          1.7-45.el7                      @base      
+tk.x86_64                            1:8.5.13-6.el7                  @base      
+traceroute.x86_64                    3:2.0.22-2.el7                  @base      
+trousers.x86_64                      0.3.14-2.el7                    @base      
+tsung.x86_64                         1.6.0-1.el7                     @epel      
+tuned.noarch                         2.8.0-5.el7                     @base      
+tzdata.noarch                        2017c-1.el7                     @updates   
+unbound.x86_64                       1.4.20-34.el7                   @base      
+unbound-libs.x86_64                  1.4.20-34.el7                   @base      
+unixODBC.x86_64                      2.3.1-11.el7                    @base      
+unzip.x86_64                         6.0-16.el7                      @base      
+urw-fonts.noarch                     2.4-16.el7                      @base      
+usb_modeswitch.x86_64                2.4.0-5.el7                     @base      
+usb_modeswitch-data.noarch           20160612-2.el7                  @base      
+usbutils.x86_64                      007-5.el7                       @base      
+usermode.x86_64                      1.111-5.el7                     @base      
+ustr.x86_64                          1.0.4-16.el7                    @anaconda  
+util-linux.x86_64                    2.23.2-43.el7                   @base      
+vim-common.x86_64                    2:7.4.160-2.el7                 @base      
+vim-enhanced.x86_64                  2:7.4.160-2.el7                 @base      
+vim-filesystem.x86_64                2:7.4.160-2.el7                 @base      
+vim-minimal.x86_64                   2:7.4.160-2.el7                 @base      
+virt-what.x86_64                     1.13-10.el7                     @base      
+vsftpd.x86_64                        3.0.2-22.el7                    @base      
+wget.x86_64                          1.14-15.el7_4.1                 @updates   
+which.x86_64                         2.20-7.el7                      @anaconda  
+words.noarch                         3.0-22.el7                      @base      
+wpa_supplicant.x86_64                1:2.6-5.el7_4.1                 @updates   
+wxBase.x86_64                        2.8.12-20.el7                   @epel      
+wxGTK.x86_64                         2.8.12-20.el7                   @epel      
+wxGTK-gl.x86_64                      2.8.12-20.el7                   @epel      
+xdg-utils.noarch                     1.1.0-0.17.20120809git.el7      @base      
+xfsdump.x86_64                       3.1.4-1.el7                     @base      
+xfsprogs.x86_64                      4.5.0-12.el7                    @base      
+xmlrpc-c.x86_64                      1.32.5-1905.svn2451.el7         @base      
+xmlrpc-c-client.x86_64               1.32.5-1905.svn2451.el7         @base      
+xorg-x11-font-utils.x86_64           1:7.5-20.el7                    @base      
+xorg-x11-server-utils.x86_64         7.7-20.el7                      @base      
+xz.x86_64                            5.2.2-1.el7                     @anaconda  
+xz-devel.x86_64                      5.2.2-1.el7                     @base      
+xz-libs.i686                         5.2.2-1.el7                     @base      
+xz-libs.x86_64                       5.2.2-1.el7                     @anaconda  
+yajl.x86_64                          2.0.4-4.el7                     @base      
+yum.noarch                           3.4.3-154.el7.centos            @base      
+yum-langpacks.noarch                 0.4.2-7.el7                     @base      
+yum-metadata-parser.x86_64           1.1.4-10.el7                    @anaconda  
+yum-plugin-fastestmirror.noarch      1.1.31-42.el7                   @base      
+yum-utils.noarch                     1.1.31-42.el7                   @base      
+zabbix-agent.x86_64                  3.2.10-1.el7                    @zabbix    
+zabbix-release.noarch                3.2-1.el7                       installed  
+zip.x86_64                           3.0-11.el7                      @base      
+zlib.i686                            1.2.7-17.el7                    @base      
+zlib.x86_64                          1.2.7-17.el7                    @anaconda  
+zlib-devel.x86_64                    1.2.7-17.el7                    @base      
+[packages(rpm)]==================================================================================================
+libstdc++-4.8.5-16.el7.i686
+php-pecl-jsonc-devel-1.3.10-2.el7.remi.5.6.x86_64
+yum-langpacks-0.4.2-7.el7.noarch
+libselinux-utils-2.5-11.el7.x86_64
+fontconfig-2.10.95-11.el7.x86_64
+zip-3.0-11.el7.x86_64
+php-pecl-apcu-4.0.11-2.el7.remi.5.6.x86_64
+spax-1.5.2-13.el7.x86_64
+bridge-utils-1.5-9.el7.x86_64
+iproute-3.10.0-87.el7.x86_64
+ivtv-firmware-20080701-26.el7.noarch
+sssd-client-1.15.2-50.el7_4.6.x86_64
+dbus-libs-1.6.12-17.el7.x86_64
+util-linux-2.23.2-43.el7.x86_64
+grub2-tools-extra-2.02-0.65.el7.centos.2.x86_64
+words-3.0-22.el7.noarch
+e2fsprogs-libs-1.42.9-10.el7.x86_64
+kmod-libs-20-15.el7_4.4.x86_64
+libidn-1.28-4.el7.x86_64
+krb5-libs-1.15.1-8.el7.x86_64
+mod_ssl-2.4.6-67.el7.centos.6.x86_64
+abrt-libs-2.1.11-48.el7.centos.x86_64
+libassuan-2.1.0-3.el7.x86_64
+virt-what-1.13-10.el7.x86_64
+zabbix-agent-3.2.10-1.el7.x86_64
+libreport-cli-2.1.11-38.el7.centos.x86_64
+python-linux-procfs-0.4.9-3.el7.noarch
+kernel-3.10.0-693.5.2.el7.x86_64
+boost-date-time-1.53.0-27.el7.x86_64
+tcp_wrappers-libs-7.6-77.el7.x86_64
+yum-3.4.3-154.el7.centos.noarch
+kernel-headers-3.10.0-693.5.2.el7.x86_64
+abrt-addon-vmcore-2.1.11-48.el7.centos.x86_64
+libXt-1.1.5-3.el7.x86_64
+libseccomp-2.3.1-3.el7.x86_64
+python-gobject-base-3.22.0-1.el7.x86_64
+libxml2-python-2.9.1-6.el7_2.3.x86_64
+perl-Compress-Raw-Zlib-2.061-4.el7.x86_64
+chrony-3.1-2.el7.centos.x86_64
+e2fsprogs-1.42.9-10.el7.x86_64
+python-six-1.9.0-2.el7.noarch
+dejavu-fonts-common-2.33-6.el7.noarch
+libreport-plugin-mailx-2.1.11-38.el7.centos.x86_64
+freetype-2.4.11-15.el7.x86_64
+perl-Encode-Locale-1.03-5.el7.noarch
+yum-utils-1.1.31-42.el7.noarch
+libverto-0.2.5-4.el7.x86_64
+libX11-common-1.6.5-1.el7.noarch
+langtable-python-0.0.31-3.el7.noarch
+xorg-x11-font-utils-7.5-20.el7.x86_64
+cracklib-2.9.0-11.el7.x86_64
+glib-networking-2.50.0-1.el7.x86_64
+perl-TimeDate-2.30-2.el7.noarch
+libmpc-1.0.1-3.el7.x86_64
+lsscsi-0.27-6.el7.x86_64
+perl-Encode-2.51-7.el7.x86_64
+perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64
+apr-util-1.5.2-6.el7.x86_64
+python-iniparse-0.4-9.el7.noarch
+kbd-1.15.5-13.el7.x86_64
+perl-Time-HiRes-1.9725-3.el7.x86_64
+perl-FCGI-0.74-8.el7.x86_64
+cpp-4.8.5-16.el7.x86_64
+pyliblzma-0.5.3-11.el7.x86_64
+libsoup-2.56.0-4.el7_4.x86_64
+perl-constant-1.27-2.el7.noarch
+perl-HTML-Tagset-3.20-15.el7.noarch
+perl-Git-1.8.3.1-12.el7_4.noarch
+jbigkit-libs-2.0-11.el7.x86_64
+erlang-compiler-R16B-03.18.el7.x86_64
+rpcbind-0.2.0-42.el7.x86_64
+erlang-public_key-R16B-03.18.el7.x86_64
+gcc-4.8.5-16.el7.x86_64
+gdb-7.6.1-100.el7.x86_64
+erlang-cosNotification-R16B-03.18.el7.x86_64
+systemtap-3.1-3.el7.x86_64
+pygpgme-0.3-9.el7.x86_64
+irqbalance-1.0.7-10.el7.x86_64
+dmraid-1.0.0.rc16-28.el7.x86_64
+erlang-erl_docgen-R16B-03.18.el7.x86_64
+doxygen-1.8.5-3.el7.x86_64
+qrencode-libs-3.4.1-3.el7.x86_64
+erlang-toolbar-R16B-03.18.el7.x86_64
+diffstat-1.57-4.el7.x86_64
+iwl2000-firmware-18.168.6.1-56.el7.noarch
+perl-Business-ISBN-2.06-2.el7.noarch
+ncurses-devel-5.9-14.20130511.el7_4.x86_64
+iwl1000-firmware-39.31.5.1-56.el7.noarch
+python-pillow-2.0.0-19.gitd1c6db8.el7.x86_64
+libthai-0.1.14-9.el7.x86_64
+ftp-0.17-67.el7.x86_64
+sg3_utils-libs-1.37-12.el7.x86_64
+libfprint-0.5.0-4.el7.x86_64
+gnuplot-4.6.2-3.el7.x86_64
+libgcc-4.8.5-16.el7.i686
+cronolog-1.6.2-14.el7.x86_64
+python-cheetah-2.4.4-5.el7.centos.x86_64
+erlang-debugger-R16B-03.18.el7.x86_64
+elfutils-libs-0.168-8.el7.x86_64
+openldap-devel-2.4.44-5.el7.x86_64
+libnl-1.1.4-3.el7.x86_64
+erlang-R16B-03.18.el7.x86_64
+rdma-core-13-7.el7.x86_64
+quota-4.01-14.el7.x86_64
+perl-Image-Info-1.33-3.el7.noarch
+libgcrypt-1.5.3-14.el7.i686
+libattr-2.4.46-12.el7.i686
+setup-2.8.71-7.el7.noarch
+dracut-config-rescue-033-502.el7.x86_64
+php-mcrypt-5.6.31-1.el7.remi.x86_64
+pcre-8.32-17.el7.i686
+php-gd-5.6.31-1.el7.remi.x86_64
+passwd-0.79-4.el7.x86_64
+libuuid-2.23.2-43.el7.x86_64
+gpg-pubkey-ab97acbe-586223cc
+cpio-2.11-25.el7_4.x86_64
+td-agent-2.3.6-0.el7.x86_64
+rfkill-0.4-9.el7.x86_64
+libmount-2.23.2-43.el7.x86_64
+grub2-common-2.02-0.65.el7.centos.2.noarch
+rdate-1.4-25.el7.x86_64
+nss-3.28.4-15.el7_4.x86_64
+gdisk-0.8.6-5.el7.x86_64
+lua-5.1.4-15.el7.x86_64
+p11-kit-trust-0.23.5-3.el7.x86_64
+wpa_supplicant-2.6-5.el7_4.1.x86_64
+chkconfig-1.7.4-1.el7.x86_64
+NetworkManager-ppp-1.8.0-11.el7_4.x86_64
+bind-license-9.9.4-51.el7.noarch
+groff-base-1.22.2-8.el7.x86_64
+python-babel-0.9.6-8.el7.noarch
+kexec-tools-2.0.14-17.2.el7.x86_64
+cryptsetup-libs-1.7.4-3.el7.x86_64
+python2-rsa-3.4.1-1.el7.noarch
+mysql-community-libs-compat-5.7.20-1.el7.x86_64
+sos-3.4-6.el7.centos.noarch
+keyutils-libs-1.5.8-3.el7.x86_64
+systemd-libs-219-42.el7_4.4.i686
+expat-2.1.0-10.el7_3.x86_64
+abrt-retrace-client-2.1.11-48.el7.centos.x86_64
+atk-2.22.0-3.el7.x86_64
+hunspell-en-US-0.20121024-6.el7.noarch
+libXcursor-1.1.14-8.el7.x86_64
+systemtap-runtime-3.1-3.el7.x86_64
+pinentry-0.8.1-17.el7.x86_64
+initscripts-9.49.39-1.el7.x86_64
+perl-Image-Base-1.07-23.el7.noarch
+smartmontools-6.2-8.el7.x86_64
+libmodman-2.0.1-8.el7.x86_64
+perl-macros-5.16.3-292.el7.x86_64
+perl-Image-Xpm-1.09-21.el7.noarch
+net-tools-2.0-0.22.20131004git.el7.x86_64
+tk-8.5.13-6.el7.x86_64
+libgcc-4.8.5-16.el7.x86_64
+cracklib-dicts-2.9.0-11.el7.x86_64
+libX11-1.6.5-1.el7.x86_64
+perl-Net-SSLeay-1.55-6.el7.x86_64
+perl-Pod-Perldoc-3.20-4.el7.noarch
+rpm-build-libs-4.11.3-25.el7.x86_64
+plymouth-core-libs-0.8.9-0.28.20140113.el7.centos.x86_64
+poppler-data-0.4.6-3.el7.noarch
+perl-threads-1.87-4.el7.x86_64
+avahi-libs-0.6.31-17.el7.x86_64
+python-slip-dbus-0.4.0-2.el7.noarch
+gdk-pixbuf2-2.36.5-1.el7.x86_64
+cairo-1.14.8-2.el7.x86_64
+perl-PathTools-3.40-5.el7.x86_64
+perl-XML-Parser-2.41-10.el7.x86_64
+erlang-crypto-R16B-03.18.el7.x86_64
+setools-libs-3.3.8-1.1.el7.x86_64
+perl-Data-Dumper-2.145-3.el7.x86_64
+curl-7.29.0-42.el7.x86_64
+erlang-runtime_tools-R16B-03.18.el7.x86_64
+gettext-common-devel-0.19.8.1-2.el7.noarch
+libuser-0.60-7.el7_1.x86_64
+python-urllib3-1.10.2-3.el7.noarch
+erlang-orber-R16B-03.18.el7.x86_64
+usermode-1.111-5.el7.x86_64
+perl-Test-Harness-3.28-3.el7.noarch
+pth-2.0.7-23.el7.x86_64
+cloud-utils-growpart-0.29-2.el7.noarch
+erlang-ssh-R16B-03.18.el7.x86_64
+subversion-1.7.14-11.el7_4.x86_64
+tar-1.26-32.el7.x86_64
+erlang-cosTransactions-R16B-03.18.el7.x86_64
+checkpolicy-2.5-4.el7.x86_64
+byacc-1.9.20130304-3.el7.x86_64
+iwl6000g2a-firmware-17.168.5.3-56.el7.noarch
+erlang-odbc-R16B-03.18.el7.x86_64
+libxml2-devel-2.9.1-6.el7_2.3.x86_64
+libpcap-1.5.3-9.el7.x86_64
+perl-HTTP-Cookies-6.01-5.el7.noarch
+iwl3945-firmware-15.32.2.9-56.el7.noarch
+librsvg2-2.40.16-1.el7.x86_64
+nmap-6.40-7.el7.x86_64
+crontabs-1.11-6.20121102git.el7.noarch
+gpg-pubkey-a14fe591-578876fd
+wxGTK-gl-2.8.12-20.el7.x86_64
+python-backports-ssl_match_hostname-3.4.0.2-4.el7.noarch
+nspr-4.13.1-1.0.el7_3.x86_64
+apr-devel-1.4.8-3.el7.x86_64
+erlang-typer-R16B-03.18.el7.x86_64
+libselinux-2.5-11.el7.x86_64
+perl-Net-HTTP-6.06-2.el7.noarch
+libdwarf-20130207-4.el7.x86_64
+libgpg-error-1.12-3.el7.i686
+json-c-0.11-4.el7_0.x86_64
+mysql-community-libs-5.7.19-1.el7.x86_64
+libsepol-2.5-6.el7.i686
+php-common-5.6.31-1.el7.remi.x86_64
+setuptool-1.19.11-8.el7.x86_64
+pcre-devel-8.32-17.el7.x86_64
+fio-2.2.8-2.el7.x86_64
+libmcrypt-2.5.8-13.el7.x86_64
+aic94xx-firmware-30-6.el7.noarch
+libXpm-3.5.12-1.el7.x86_64
+elfutils-0.168-8.el7.x86_64
+parted-3.1-28.el7.x86_64
+t1lib-5.1.2-14.el7.x86_64
+libselinux-2.5-11.el7.i686
+at-3.1.13-22.el7.x86_64
+libxslt-1.1.28-5.el7.x86_64
+bash-4.2.46-29.el7_4.x86_64
+time-1.7-45.el7.x86_64
+libsysfs-2.1.0-16.el7.x86_64
+xz-libs-5.2.2-1.el7.x86_64
+mysql57-community-release-el7-10.noarch
+gawk-4.0.2-4.el7_3.1.x86_64
+popt-1.13-16.el7.x86_64
+cups-libs-1.6.3-29.el7.x86_64
+jansson-2.10-1.el7.x86_64
+redhat-lsb-core-4.1-27.el7.centos.1.x86_64
+p11-kit-0.23.5-3.el7.x86_64
+dosfstools-3.0.20-9.el7.x86_64
+mysql-community-client-5.7.20-1.el7.x86_64
+libsemanage-2.5-8.el7.x86_64
+unzip-6.0-16.el7.x86_64
+libffi-3.0.13-18.el7.x86_64
+systemd-libs-219-42.el7_4.4.x86_64
+glib2-2.50.3-3.el7.x86_64
+gpg-pubkey-f4a80eb5-53a7ff4b
+libacl-2.2.51-12.el7.x86_64
+kmod-20-15.el7_4.4.x86_64
+polkit-0.112-12.el7_3.x86_64
+grub2-pc-2.02-0.65.el7.centos.2.x86_64
+libicu-50.1.2-15.el7.x86_64
+sqlite-3.7.17-8.el7.x86_64
+iptables-1.4.21-18.2.el7_4.x86_64
+procps-ng-3.3.10-16.el7.x86_64
+ldns-1.6.16-10.el7.x86_64
+systemd-sysv-219-42.el7_4.4.x86_64
+ca-certificates-2017.2.14-71.el7.noarch
+device-mapper-libs-1.02.140-8.el7.x86_64
+httpd-tools-2.4.6-67.el7.centos.6.x86_64
+python-2.7.5-58.el7.x86_64
+libreport-python-2.1.11-38.el7.centos.x86_64
+selinux-policy-targeted-3.13.1-166.el7_4.5.noarch
+iputils-20160308-10.el7.x86_64
+libreport-plugin-mantisbt-2.1.11-38.el7.centos.x86_64
+NetworkManager-wifi-1.8.0-11.el7_4.x86_64
+python-markupsafe-0.11-10.el7.x86_64
+libreport-plugin-rhtsupport-2.1.11-38.el7.centos.x86_64
+which-2.20-7.el7.x86_64
+iptables-services-1.4.21-18.2.el7_4.x86_64
+python-jinja2-2.7.2-2.el7.noarch
+lvm2-libs-2.02.171-8.el7.x86_64
+grub2-2.02-0.65.el7.centos.2.x86_64
+python-pyudev-0.15-9.el7.noarch
+libstoragemgmt-python-1.4.0-3.el7.noarch
+slang-2.2.4-11.el7.x86_64
+kernel-debug-devel-3.10.0-693.5.2.el7.x86_64
+python-schedutils-0.4-6.el7.x86_64
+vim-common-7.4.160-2.el7.x86_64
+hostname-3.13-3.el7.x86_64
+libsss_idmap-1.15.2-50.el7_4.6.x86_64
+fipscheck-lib-1.4.1-6.el7.x86_64
+abrt-2.1.11-48.el7.centos.x86_64
+kernel-3.10.0-514.6.1.el7.x86_64
+libsss_nss_idmap-1.15.2-50.el7_4.6.x86_64
+openldap-2.4.44-5.el7.x86_64
+abrt-addon-xorg-2.1.11-48.el7.centos.x86_64
+libICE-1.0.9-9.el7.x86_64
+abrt-tui-2.1.11-48.el7.centos.x86_64
+pkgconfig-0.27.1-4.el7.x86_64
+libXxf86vm-1.1.4-1.el7.x86_64
+gsettings-desktop-schemas-3.22.0-1.el7.x86_64
+hunspell-en-GB-0.20121024-6.el7.noarch
+xmlrpc-c-client-1.32.5-1905.svn2451.el7.x86_64
+wxBase-2.8.12-20.el7.x86_64
+libteam-1.25-5.el7.x86_64
+hunspell-en-0.20121024-6.el7.noarch
+libXdamage-1.1.4-4.1.el7.x86_64
+vim-enhanced-7.4.160-2.el7.x86_64
+python-chardet-2.2.1-1.el7_1.noarch
+libXi-1.7.9-1.el7.x86_64
+policycoreutils-python-2.5-17.1.el7.x86_64
+bind-utils-9.9.4-51.el7.x86_64
+GeoIP-1.5.0-11.el7.x86_64
+libxshmfence-1.2-1.el7.x86_64
+cronie-1.4.11-17.el7.x86_64
+mesa-libGL-17.0.1-6.20170307.el7.x86_64
+kpatch-0.4.0-1.el7.noarch
+mesa-libEGL-17.0.1-6.20170307.el7.x86_64
+perl-libs-5.16.3-292.el7.x86_64
+rng-tools-5-11.el7.x86_64
+coreutils-8.22-18.el7.x86_64
+dejavu-sans-mono-fonts-2.33-6.el7.noarch
+ipset-6.29-1.el7.x86_64
+tcsh-6.18.01-15.el7.x86_64
+ghostscript-fonts-5.50-32.el7.noarch
+gmp-6.0.0-15.el7.x86_64
+scl-utils-20130529-18.el7_4.x86_64
+usb_modeswitch-data-20160612-2.el7.noarch
+dbus-python-1.1.1-9.el7.x86_64
+xorg-x11-server-utils-7.7-20.el7.x86_64
+jasper-libs-1.900.1-31.el7.x86_64
+libstdc++-4.8.5-16.el7.x86_64
+perl-parent-0.225-244.el7.noarch
+perl-File-Listing-6.04-7.el7.noarch
+emacs-filesystem-24.3-20.el7_4.noarch
+rpm-4.11.3-25.el7.x86_64
+perl-Text-ParseWords-3.29-4.el7.noarch
+perl-Digest-MD5-2.52-3.el7.x86_64
+libdrm-2.4.74-1.el7.x86_64
+libquadmath-4.8.5-16.el7.x86_64
+perl-IO-HTML-1.00-2.el7.noarch
+plymouth-scripts-0.8.9-0.28.20140113.el7.centos.x86_64
+patch-2.7.1-8.el7.x86_64
+perl-Storable-2.45-3.el7.x86_64
+python-slip-0.4.0-2.el7.noarch
+libXcomposite-0.4.4-4.1.el7.x86_64
+boost-thread-1.53.0-27.el7.x86_64
+gettext-0.19.8.1-2.el7.x86_64
+perl-Exporter-5.68-3.el7.noarch
+yum-metadata-parser-1.1.4-10.el7.x86_64
+pixman-0.34.0-1.el7.x86_64
+kernel-3.10.0-693.2.2.el7.x86_64
+libgnome-keyring-3.12.0-1.el7.x86_64
+perl-Scalar-List-Utils-1.27-248.el7.x86_64
+harfbuzz-1.3.2-1.el7.x86_64
+firewalld-0.4.4.4-6.el7.noarch
+systemtap-client-3.1-3.el7.x86_64
+perl-Pod-Simple-3.28-4.el7.noarch
+lksctp-tools-1.0.17-2.el7.x86_64
+dhclient-4.2.5-58.el7.centos.x86_64
+dwz-0.11-3.el7.x86_64
+erlang-erts-R16B-03.18.el7.x86_64
+neon-0.30.0-3.el7.x86_64
+lm_sensors-libs-3.4.0-4.20160601gitf9185e5.el7.x86_64
+erlang-mnesia-R16B-03.18.el7.x86_64
+redhat-rpm-config-9.1.0-76.el7.centos.noarch
+erlang-xmerl-R16B-03.18.el7.x86_64
+unbound-1.4.20-34.el7.x86_64
+glibc-headers-2.17-196.el7.x86_64
+libyaml-0.1.4-11.el7_0.x86_64
+python-pycurl-7.19.0-19.el7.x86_64
+erlang-inets-R16B-03.18.el7.x86_64
+libquadmath-devel-4.8.5-16.el7.x86_64
+hardlink-1.0-19.el7.x86_64
+erlang-cosEvent-R16B-03.18.el7.x86_64
+libtool-2.4.2-22.el7_3.x86_64
+erlang-edoc-R16B-03.18.el7.x86_64
+rpm-build-4.11.3-25.el7.x86_64
+sgpio-1.2.0.10-13.el7.x86_64
+erlang-tv-R16B-03.18.el7.x86_64
+rpm-python-4.11.3-25.el7.x86_64
+erlang-cosEventDomain-R16B-03.18.el7.x86_64
+ctags-5.8-13.el7.x86_64
+ustr-1.0.4-16.el7.x86_64
+erlang-eldap-R16B-03.18.el7.x86_64
+patchutils-0.3.3-4.el7.x86_64
+erlang-ic-R16B-03.18.el7.x86_64
+xz-devel-5.2.2-1.el7.x86_64
+erlang-eunit-R16B-03.18.el7.x86_64
+ncurses-base-5.9-14.20130511.el7_4.noarch
+dbus-1.6.12-17.el7.x86_64
+perl-HTTP-Message-6.06-6.el7.noarch
+perl-HTTP-Daemon-6.01-5.el7.noarch
+perl-Sys-MemInfo-0.91-7.el7.x86_64
+gtk2-2.24.31-1.el7.x86_64
+nmap-ncat-6.40-7.el7.x86_64
+rrdtool-perl-1.4.8-9.el7.x86_64
+iotop-0.6-2.el7.noarch
+wxGTK-2.8.12-20.el7.x86_64
+glibc-2.17-196.el7.i686
+erlang-webtool-R16B-03.18.el7.x86_64
+libgcrypt-1.5.3-14.el7.x86_64
+python-requests-2.6.0-1.el7_1.noarch
+ppp-2.4.5-33.el7.x86_64
+cyrus-sasl-2.1.26-21.el7.x86_64
+pcre-8.32-17.el7.x86_64
+libdb-devel-5.3.21-20.el7.x86_64
+dracut-033-502.el7.x86_64
+gpm-libs-1.20.7-5.el7.x86_64
+alsa-firmware-1.0.28-2.el7.noarch
+xz-libs-5.2.2-1.el7.i686
+librbd1-0.94.5-2.el7.x86_64
+kernel-3.10.0-514.el7.x86_64
+mysql-community-client-5.7.19-1.el7.x86_64
+cracklib-2.9.0-11.el7.i686
+gpg-pubkey-00f97f56-467e318a
+libcap-ng-0.7.5-4.el7.i686
+php-pecl-zip-1.15.1-1.el7.remi.5.6.x86_64
+python-dmidecode-3.12.2-1.el7.x86_64
+qemu-guest-agent-2.8.0-2.el7.x86_64
+dnsmasq-2.76-2.el7_4.2.x86_64
+iwl105-firmware-18.168.6.1-56.el7.noarch
+iwl4965-firmware-228.61.2.24-56.el7.noarch
+iwl7260-firmware-22.0.7.0-56.el7.noarch
+iwl135-firmware-18.168.6.1-56.el7.noarch
+iwl7265-firmware-22.0.7.0-56.el7.noarch
+iwl2030-firmware-18.168.6.1-56.el7.noarch
+erlang-dialyzer-R16B-03.18.el7.x86_64
+erlang-reltool-R16B-03.18.el7.x86_64
+perl-IO-Socket-SSL-1.94-6.el7.noarch
+perl-XML-LibXML-2.0018-5.el7.x86_64
+tsung-1.6.0-1.el7.x86_64
+libdb-5.3.21-20.el7.i686
+php-5.6.31-1.el7.remi.x86_64
+audit-2.7.6-3.el7.x86_64
+basesystem-10.0-7.el7.centos.noarch
+libtool-ltdl-2.4.2-22.el7_3.x86_64
+postfix-2.10.1-6.el7.x86_64
+fontpackages-filesystem-1.44-8.el7.noarch
+usbutils-007-5.el7.x86_64
+audit-libs-python-2.7.6-3.el7.x86_64
+gd-last-2.2.5-1.el7.remi.x86_64
+man-db-2.6.3-9.el7.x86_64
+traceroute-2.0.22-2.el7.x86_64
+pam-1.1.8-18.el7.i686
+libsepol-2.5-6.el7.x86_64
+php-mysqlnd-5.6.31-1.el7.remi.x86_64
+libcom_err-1.42.9-10.el7.x86_64
+info-5.1-4.el7.x86_64
+php-opcache-5.6.31-1.el7.remi.x86_64
+rootfiles-8.1-11.el7.noarch
+pm-utils-1.4.1-27.el7.x86_64
+libblkid-2.23.2-43.el7.x86_64
+psmisc-22.20-15.el7.x86_64
+ed-1.9-4.el7.x86_64
+libnl3-3.2.28-4.el7.x86_64
+redhat-lsb-submod-security-4.1-27.el7.centos.1.x86_64
+mtr-0.85-7.el7.x86_64
+centos-release-7-4.1708.el7.centos.x86_64
+mysql-community-libs-5.7.20-1.el7.x86_64
+libnl3-cli-3.2.28-4.el7.x86_64
+wget-1.14-15.el7_4.1.x86_64
+setserial-2.17-33.el7.x86_64
+shared-mime-info-1.8-3.el7.x86_64
+libattr-2.4.46-12.el7.x86_64
+grub2-tools-2.02-0.65.el7.centos.2.x86_64
+nss-softokn-3.28.3-8.el7_4.x86_64
+libxml2-2.9.1-6.el7_2.3.x86_64
+grub2-pc-modules-2.02-0.65.el7.centos.2.noarch
+NetworkManager-libnm-1.8.0-11.el7_4.x86_64
+libevent-2.0.21-4.el7.x86_64
+ethtool-4.8-1.el7.x86_64
+diffutils-3.3-4.el7.x86_64
+systemd-219-42.el7_4.4.x86_64
+device-mapper-1.02.140-8.el7.x86_64
+openssl-libs-1.0.2k-8.el7.x86_64
+file-libs-5.11-33.el7.x86_64
+selinux-policy-3.13.1-166.el7_4.5.noarch
+libreport-filesystem-2.1.11-38.el7.centos.x86_64
+python-setuptools-0.9.8-7.el7.noarch
+file-5.11-33.el7.x86_64
+httpd-devel-2.4.6-67.el7.centos.6.x86_64
+libreport-web-2.1.11-38.el7.centos.x86_64
+dmidecode-3.0-5.el7.x86_64
+NetworkManager-tui-1.8.0-11.el7_4.x86_64
+libreport-centos-2.1.11-38.el7.centos.x86_64
+xz-5.2.2-1.el7.x86_64
+openssh-server-7.4p1-13.el7_4.x86_64
+device-mapper-event-1.02.140-8.el7.x86_64
+python-prettytable-0.7.2-3.el7.noarch
+sysvinit-tools-2.88-14.dsf.el7.x86_64
+nss-tools-3.28.4-15.el7_4.x86_64
+libstoragemgmt-1.4.0-3.el7.x86_64
+python-jsonpatch-1.2-4.el7.noarch
+libnfnetlink-1.0.1-4.el7.x86_64
+libgudev1-219-42.el7_4.4.x86_64
+dyninst-9.3.1-1.el7.x86_64
+yum-plugin-fastestmirror-1.1.31-42.el7.noarch
+lzo-2.06-8.el7.x86_64
+augeas-libs-1.4.0-2.el7_4.2.x86_64
+abrt-python-2.1.11-48.el7.centos.x86_64
+fipscheck-1.4.1-6.el7.x86_64
+gdbm-1.10-8.el7.x86_64
+epel-release-7-11.noarch
+abrt-addon-pstoreoops-2.1.11-48.el7.centos.x86_64
+dhcp-libs-4.2.5-58.el7.centos.x86_64
+less-458-9.el7.x86_64
+libXrender-0.9.10-1.el7.x86_64
+abrt-addon-python-2.1.11-48.el7.centos.x86_64
+nettle-2.7.1-8.el7.x86_64
+libXinerama-1.1.3-2.1.el7.x86_64
+libtar-1.2.11-29.el7.x86_64
+device-mapper-persistent-data-0.7.0-0.1.rc6.el7.x86_64
+gobject-introspection-1.50.0-1.el7.x86_64
+libXmu-1.1.2-2.el7.x86_64
+libjpeg-turbo-1.2.90-5.el7.x86_64
+cyrus-sasl-plain-2.1.26-21.el7.x86_64
+teamd-1.25-5.el7.x86_64
+dbus-glib-0.100-7.el7.x86_64
+perl-LWP-MediaTypes-6.02-2.el7.noarch
+python-augeas-0.5.0-2.el7.noarch
+abrt-console-notification-2.1.11-48.el7.centos.x86_64
+libss-1.42.9-10.el7.x86_64
+libXft-2.3.2-2.el7.x86_64
+cryptsetup-1.7.4-3.el7.x86_64
+binutils-2.25.1-32.base.el7_4.1.x86_64
+make-3.82-23.el7.x86_64
+perl-XML-SAX-Base-1.08-7.el7.noarch
+langtable-0.0.31-3.el7.noarch
+mdadm-4.0-5.el7.x86_64
+cronie-anacron-1.4.11-17.el7.x86_64
+libedit-3.0-12.20121213cvs.el7.x86_64
+mesa-libglapi-17.0.1-6.20170307.el7.x86_64
+psacct-6.6.1-13.el7.x86_64
+hwdata-0.252-8.6.el7.x86_64
+snappy-1.1.0-3.el7.x86_64
+mesa-libgbm-17.0.1-6.20170307.el7.x86_64
+man-pages-overrides-7.4.3-1.el7.x86_64
+perl-5.16.3-292.el7.x86_64
+dejavu-sans-fonts-2.33-6.el7.noarch
+langtable-data-0.0.31-3.el7.noarch
+sysstat-10.1.5-12.el7.x86_64
+vim-minimal-7.4.160-2.el7.x86_64
+urw-fonts-2.4-16.el7.noarch
+python-kitchen-1.1.1-5.el7.noarch
+rsync-3.0.9-18.el7.x86_64
+gnutls-3.3.26-9.el7.x86_64
+python-decorator-3.4.0-3.el7.noarch
+libXxf86misc-1.0.3-7.1.el7.x86_64
+usb_modeswitch-2.4.0-5.el7.x86_64
+glibc-2.17-196.el7.x86_64
+linux-firmware-20170606-56.gitc990aae.el7.noarch
+pam-1.1.8-18.el7.x86_64
+perl-HTTP-Date-6.02-8.el7.noarch
+perl-HTTP-Tiny-0.033-3.el7.noarch
+rpm-libs-4.11.3-25.el7.x86_64
+kbd-legacy-1.15.5-13.el7.noarch
+perl-Digest-1.17-245.el7.noarch
+m4-1.4.16-10.el7.x86_64
+perl-IO-Compress-2.061-2.el7.noarch
+gettext-libs-0.19.8.1-2.el7.x86_64
+plymouth-0.8.9-0.28.20140113.el7.centos.x86_64
+unixODBC-2.3.1-11.el7.x86_64
+perl-Carp-1.26-244.el7.noarch
+perl-Thread-Queue-3.02-2.el7.noarch
+iprutils-2.4.14.1-1.el7.x86_64
+newt-python-0.52.15-4.el7.x86_64
+perl-CGI-3.63-4.el7.noarch
+perl-threads-shared-1.43-6.el7.x86_64
+libstdc++-devel-4.8.5-16.el7.x86_64
+rsyslog-8.24.0-12.el7.x86_64
+pyxattr-0.5.1-5.el7.x86_64
+graphite2-1.3.10-1.el7_3.x86_64
+perl-File-Temp-0.23.01-3.el7.noarch
+mokutil-12-1.el7.centos.x86_64
+sudo-1.8.19p2-11.el7_4.x86_64
+hicolor-icon-theme-0.12-7.el7.noarch
+perl-Getopt-Long-2.40-2.el7.noarch
+git-1.8.3.1-12.el7_4.x86_64
+cloud-init-0.7.9-9.el7.centos.2.x86_64
+erlang-stdlib-R16B-03.18.el7.x86_64
+autogen-libopts-5.18-5.el7.x86_64
+pakchois-0.4-10.el7.x86_64
+libssh2-1.4.3-10.el7_2.1.x86_64
+erlang-hipe-R16B-03.18.el7.x86_64
+perl-srpm-macros-1-8.el7.noarch
+erlang-snmp-R16B-03.18.el7.x86_64
+libXau-1.0.8-2.1.el7.x86_64
+erlang-ssl-R16B-03.18.el7.x86_64
+PyYAML-3.10-11.el7.x86_64
+systemtap-devel-3.1-3.el7.x86_64
+erlang-sasl-R16B-03.18.el7.x86_64
+python-jsonpointer-1.9-2.el7.noarch
+intltool-0.50.2-7.el7.noarch
+erlang-cosProperty-R16B-03.18.el7.x86_64
+gcc-c++-4.8.5-16.el7.x86_64
+dmraid-events-1.0.0.rc16-28.el7.x86_64
+flex-2.5.37-3.el7.x86_64
+libdaemon-0.14-7.el7.x86_64
+swig-2.0.10-5.el7.x86_64
+libpipeline-1.2.3-3.el7.x86_64
+attr-2.4.46-12.el7.x86_64
+indent-2.2.11-13.el7.x86_64
+libutempter-1.1.6-4.el7.x86_64
+zlib-devel-1.2.7-17.el7.x86_64
+nkf-2.1.3-5.el7.x86_64
+ncurses-5.9-14.20130511.el7_4.x86_64
+polkit-pkla-compat-0.1-4.el7.x86_64
+perl-Date-Manip-6.41-2.el7.noarch
+xdg-utils-1.1.0-0.17.20120809git.el7.noarch
+telnet-0.17-64.el7.x86_64
+htop-2.0.2-1.el7.x86_64
+nss-softokn-freebl-3.28.3-8.el7_4.i686
+remi-release-7.3-2.el7.remi.noarch
+libcap-2.22-9.el7.x86_64
+librados2-0.94.5-2.el7.x86_64
+cyrus-sasl-devel-2.1.26-21.el7.x86_64
+apr-util-devel-1.5.2-6.el7.x86_64
+fxload-2002_04_11-16.el7.x86_64
+libibverbs-13-7.el7.x86_64
+libestr-0.1.9-2.el7.x86_64
+tcp_wrappers-7.6-77.el7.x86_64
+gpg-pubkey-5072e1f5-5301d466
+mysql-community-server-5.7.19-1.el7.x86_64
+libzip5-1.3.0-1.el7.remi.x86_64
+authconfig-6.2.8-30.el7.x86_64
+python-markdown-2.4.1-2.el7.noarch
+libcroco-0.6.11-1.el7.x86_64
+erlang-pman-R16B-03.18.el7.x86_64
+xfsprogs-4.5.0-12.el7.x86_64
+erlang-cosFileTransfer-R16B-03.18.el7.x86_64
+microcode_ctl-2.1-22.el7.x86_64
+erlang-percept-R16B-03.18.el7.x86_64
+iwl6000g2b-firmware-17.168.5.2-56.el7.noarch
+erlang-erl_interface-R16B-03.18.el7.x86_64
+iwl5000-firmware-8.83.5.1_1-56.el7.noarch
+erlang-parsetools-R16B-03.18.el7.x86_64
+iwl3160-firmware-22.0.7.0-56.el7.noarch
+perl-URI-1.60-9.el7.noarch
+iwl5150-firmware-8.24.2.2-56.el7.noarch
+perl-HTTP-Negotiate-6.01-5.el7.noarch
+libwebp-0.3.0-7.el7.x86_64
+pango-1.40.4-1.el7.x86_64
+alsa-lib-1.1.3-3.el7.x86_64
+rrdtool-1.4.8-9.el7.x86_64
+iwl6000-firmware-9.221.4.1-56.el7.noarch
+SDL-1.2.15-14.el7.x86_64
+erlang-et-R16B-03.18.el7.x86_64
+erlang-test_server-R16B-03.18.el7.x86_64
+erlang-megaco-R16B-03.18.el7.x86_64
+perl-IO-Socket-IP-0.21-4.el7.noarch
+perl-XML-SAX-0.99-9.el7.noarch
+perl-Template-Toolkit-2.24-5.el7.x86_64
+elfutils-libelf-0.168-8.el7.i686
+fprintd-pam-0.5.0-4.0.el7_0.x86_64
+elfutils-libs-0.168-8.el7.i686
+xfsdump-3.1.4-1.el7.x86_64
+libcap-2.22-9.el7.i686
+php-cli-5.6.31-1.el7.remi.x86_64
+filesystem-3.2-21.el7.x86_64
+dracut-network-033-502.el7.x86_64
+php-mbstring-5.6.31-1.el7.remi.x86_64
+blktrace-1.0.5-8.el7.x86_64
+nss-softokn-freebl-3.28.3-8.el7_4.x86_64
+php-pdo-5.6.31-1.el7.remi.x86_64
+zlib-1.2.7-17.el7.x86_64
+nss-util-3.28.4-3.el7.x86_64
+gpg-pubkey-a12e206f-52aecba3
+nano-2.3.1-10.el7.x86_64
+readline-6.2-10.el7.x86_64
+mysql-community-common-5.7.20-1.el7.x86_64
+bc-1.06.95-13.el7.x86_64
+libcap-ng-0.7.5-4.el7.x86_64
+grub2-tools-minimal-2.02-0.65.el7.centos.2.x86_64
+lsof-4.87-4.el7.x86_64
+nss-pem-1.0.3-4.el7.x86_64
+nss-sysinit-3.28.4-15.el7_4.x86_64
+findutils-4.5.11-5.el7.x86_64
+libtasn1-4.10-1.el7.x86_64
+NetworkManager-1.8.0-11.el7_4.x86_64
+device-mapper-event-libs-1.02.140-8.el7.x86_64
+libmnl-1.0.3-7.el7.x86_64
+openssl-1.0.2k-8.el7.x86_64
+NetworkManager-team-1.8.0-11.el7_4.x86_64
+bind-libs-9.9.4-51.el7.x86_64
+pyserial-2.6-6.el7.noarch
+kernel-tools-3.10.0-693.5.2.el7.x86_64
+libstoragemgmt-python-clibs-1.4.0-3.el7.x86_64
+python2-pyasn1-0.1.9-7.el7.noarch
+tzdata-2017c-1.el7.noarch
+abrt-dbus-2.1.11-48.el7.centos.x86_64
+trousers-0.3.14-2.el7.x86_64
+libpciaccess-0.13.4-3.el7_3.x86_64
+libXext-1.3.3-3.el7.x86_64
+abrt-addon-ccpp-2.1.11-48.el7.centos.x86_64
+dhcp-common-4.2.5-58.el7.centos.x86_64
+xmlrpc-c-1.32.5-1905.svn2451.el7.x86_64
+libXfixes-5.0.3-1.el7.x86_64
+cyrus-sasl-lib-2.1.26-21.el7.x86_64
+grubby-8.28-23.el7.x86_64
+hunspell-1.3.2-15.el7.x86_64
+libXrandr-1.5.1-2.el7.x86_64
+ntp-4.2.6p5-25.el7.centos.2.x86_64
+mozjs17-17.0.0-19.el7.x86_64
+yajl-2.0.4-4.el7.x86_64
+gd-2.0.35-26.el7.x86_64
+ntsysv-1.7.4-1.el7.x86_64
+libproxy-0.4.11-10.el7.x86_64
+logrotate-3.8.6-14.el7.x86_64
+perl-Image-Xbm-1.08-21.el7.noarch
+ledmon-0.80-2.el7.x86_64
+firewalld-filesystem-0.4.4.4-6.el7.noarch
+libXaw-1.0.13-4.el7.x86_64
+glibc-common-2.17-196.el7.x86_64
+libpwquality-1.2.3-4.el7.x86_64
+libxcb-1.12-1.el7.x86_64
+perl-podlators-2.5.1-3.el7.noarch
+lcms2-2.6-3.el7.x86_64
+libgomp-4.8.5-16.el7.x86_64
+centos-logos-70.0.6-3.el7.centos.noarch
+kbd-misc-1.15.5-13.el7.noarch
+perl-Socket-2.010-4.el7.x86_64
+ghostscript-9.07-28.el7_4.2.x86_64
+perl-Error-0.17020-2.el7.noarch
+desktop-file-utils-0.23-1.el7.x86_64
+perl-File-Path-2.09-2.el7.noarch
+perl-AppConfig-1.66-20.el7.noarch
+efivar-libs-31-4.el7.x86_64
+perl-Pod-Escapes-1.04-292.el7.noarch
+erlang-kernel-R16B-03.18.el7.x86_64
+autoconf-2.69-11.el7.noarch
+python-IPy-0.75-6.el7.noarch
+erlang-gs-R16B-03.18.el7.x86_64
+gettext-devel-0.19.8.1-2.el7.x86_64
+python-pygments-1.4-10.el7.noarch
+pygobject2-2.28.6-11.el7.x86_64
+erlang-tools-R16B-03.18.el7.x86_64
+automake-1.13.4-3.el7.noarch
+gnupg2-2.0.22-4.el7.x86_64
+btrfs-progs-4.9.1-1.el7.x86_64
+tcl-8.5.13-8.el7.x86_64
+erlang-otp_mibs-R16B-03.18.el7.x86_64
+bison-3.0.4-1.el7.x86_64
+libndp-1.2-7.el7.x86_64
+erlang-appmon-R16B-03.18.el7.x86_64
+rcs-5.9.0-5.el7.x86_64
+shadow-utils-4.1.5.1-24.el7.x86_64
+erlang-jinterface-R16B-03.18.el7.x86_64
+gpg-pubkey-352c64e5-52ae6884
+kpartx-0.4.9-111.el7.x86_64
+perl-HTML-Parser-3.71-4.el7.x86_64
+perl-Sys-CPU-0.54-4.el7.x86_64
+iwl6050-firmware-41.28.5.1-56.el7.noarch
+graphviz-2.30.1-19.el7.x86_64
+dstat-0.7.2-12.el7.noarch
+zabbix-release-3.2-1.el7.noarch
+python-backports-1.0-8.el7.x86_64
+erlang-wx-R16B-03.18.el7.x86_64
+audit-libs-2.7.6-3.el7.x86_64
+libconfig-1.4.9-5.el7.x86_64
+erlang-common_test-R16B-03.18.el7.x86_64
+quota-nls-4.01-14.el7.noarch
+perl-libwww-perl-6.05-2.el7.noarch
+librdmacm-13-7.el7.x86_64
+mysql-community-common-5.7.19-1.el7.x86_64
+crda-3.13_2016.02.08-1.el7.x86_64
+bzip2-libs-1.0.6-13.el7.i686
+php-pecl-jsonc-1.3.10-2.el7.remi.5.6.x86_64
+expect-5.45-14.el7_1.x86_64
+libdb-utils-5.3.21-20.el7.x86_64
+php-devel-5.6.31-1.el7.remi.x86_64
+libselinux-python-2.5-11.el7.x86_64
+lyx-fonts-2.2.3-1.el7.noarch
+man-pages-3.53-5.el7.noarch
+rdma-core-13-7.el7.i686
+php-xml-5.6.31-1.el7.remi.x86_64
+mlocate-0.26-6.el7.x86_64
+sed-4.2.2-5.el7.x86_64
+grep-2.20-3.el7.x86_64
+cups-client-1.6.3-29.el7.x86_64
+centos-indexhtml-7-9.el7.centos.noarch
+bzip2-libs-1.0.6-13.el7.x86_64
+pciutils-libs-3.5.1-2.el7.x86_64
+mysql-community-server-5.7.20-1.el7.x86_64
+libgpg-error-1.12-3.el7.x86_64
+policycoreutils-2.5-17.1.el7.x86_64
+openssh-7.4p1-13.el7_4.x86_64
+bash-completion-2.1-6.el7.noarch
+gzip-1.5-9.el7.x86_64
+kernel-tools-libs-3.10.0-693.5.2.el7.x86_64
+python-libs-2.7.5-58.el7.x86_64
+httpd-2.4.6-67.el7.centos.6.x86_64
+libreport-2.1.11-38.el7.centos.x86_64
+unbound-libs-1.4.20-34.el7.x86_64
+systemd-python-219-42.el7_4.4.x86_64
+libreport-plugin-ureport-2.1.11-38.el7.centos.x86_64
+libunistring-0.9.3-9.el7.x86_64
+libsemanage-python-2.5-8.el7.x86_64
+openssh-clients-7.4p1-13.el7_4.x86_64
+ntpdate-4.2.6p5-25.el7.centos.2.x86_64
+newt-0.52.15-4.el7.x86_64
+libtirpc-0.2.4-0.10.el7.x86_64
+python-perf-3.10.0-693.5.2.el7.x86_64
+abrt-addon-kerneloops-2.1.11-48.el7.centos.x86_64
+libcurl-7.29.0-42.el7.x86_64
+libSM-1.2.2-2.el7.x86_64
+satyr-0.13-14.el7.x86_64
+abrt-cli-2.1.11-48.el7.centos.x86_64
+python-firewall-0.4.4.4-6.el7.noarch
+perl-XML-NamespaceSupport-1.11-10.el7.noarch
+libusbx-1.0.20-1.el7.x86_64
+lvm2-2.02.171-8.el7.x86_64
+acl-2.2.51-12.el7.x86_64
+libcgroup-0.41-13.el7.x86_64
+libfontenc-1.1.3-3.el7.x86_64
+libaio-0.3.109-13.el7.x86_64
+bind-libs-lite-9.9.4-51.el7.x86_64
+mesa-libGLU-9.0.0-4.el7.x86_64
+tcpdump-4.9.0-5.el7.x86_64
+numactl-libs-2.0.9-6.el7_2.x86_64
+ipset-libs-6.29-1.el7.x86_64
+libXfont-1.5.2-1.el7.x86_64
+strace-4.12-4.el7.x86_64
+libfastjson-0.99.4-2.el7.x86_64
+perl-Net-LibIDN-0.12-15.el7.x86_64
+mpfr-3.1.1-4.el7.x86_64
+boost-system-1.53.0-27.el7.x86_64
+gtk-update-icon-cache-3.22.10-4.el7.x86_64
+perl-Pod-Usage-1.63-3.el7.noarch
+apr-1.4.8-3.el7.x86_64
+pciutils-3.5.1-2.el7.x86_64
+perl-JSON-2.59-2.el7.noarch
+perl-Filter-1.49-3.el7.x86_64
+libgfortran-4.8.5-16.el7.x86_64
+python-configobj-4.7.2-7.el7.noarch
+perl-Pod-POM-0.27-10.el7.noarch
+perl-Time-Local-1.2300-2.el7.noarch
+perl-TermReadKey-2.30-20.el7.x86_64
+tuned-2.8.0-5.el7.noarch
+erlang-syntax_tools-R16B-03.18.el7.x86_64
+libtiff-4.0.3-27.el7_3.x86_64
+subversion-libs-1.7.14-11.el7_4.x86_64
+python2-boto-2.45.0-3.el7.noarch
+erlang-asn1-R16B-03.18.el7.x86_64
+glibc-devel-2.17-196.el7.x86_64
+python-urlgrabber-3.10-8.el7.noarch
+mailx-12.5-16.el7.x86_64
+erlang-cosTime-R16B-03.18.el7.x86_64
+libpng-1.5.13-7.el7_2.x86_64
+gcc-gfortran-4.8.5-16.el7.x86_64
+gpgme-1.3.2-5.el7.x86_64
+biosdevname-0.7.2-2.el7.x86_64
+erlang-os_mon-R16B-03.18.el7.x86_64
+rpm-sign-4.11.3-25.el7.x86_64
+libnetfilter_conntrack-1.0.6-1.el7_3.x86_64
+erlang-diameter-R16B-03.18.el7.x86_64
+bzip2-1.0.6-13.el7.x86_64
+cscope-15.8-10.el7.x86_64
+vim-filesystem-7.4.160-2.el7.x86_64
+perl-Business-ISBN-Data-20120719.001-2.el7.noarch
+ncurses-libs-5.9-14.20130511.el7_4.x86_64
+perl-WWW-RobotRules-6.02-5.el7.noarch
+logwatch-7.4.0-32.20130522svn140.el7.noarch
+os-prober-1.58-9.el7.x86_64
+iwl100-firmware-39.31.5.1-56.el7.noarch
+gnuplot-common-4.6.2-3.el7.x86_64
+fprintd-0.5.0-4.0.el7_0.x86_64
+elfutils-default-yama-scope-0.168-8.el7.noarch
+mailcap-2.1.41-2.el7.noarch
+erlang-observer-R16B-03.18.el7.x86_64
+elfutils-libelf-0.168-8.el7.x86_64
+ebtables-2.0.10-15.el7.x86_64
+expat-devel-2.1.0-10.el7_3.x86_64
+erlang-examples-R16B-03.18.el7.x86_64
+iw-4.3-1.el7.x86_64
+zlib-1.2.7-17.el7.i686
+alsa-tools-firmware-1.1.0-1.el7.x86_64
+vsftpd-3.0.2-22.el7.x86_64
+perl-XML-Simple-2.20-5.el7.noarch
+libdb-5.3.21-20.el7.x86_64
+MySQL-python-1.2.5-1.el7.x86_64
+pinfo-0.6.10-9.el7.x86_64
+audit-libs-2.7.6-3.el7.i686
+[services]=======================================================================================================
+UNIT FILE                                     STATE   
+abrt-ccpp.service                             enabled 
+abrt-oops.service                             enabled 
+abrt-pstoreoops.service                       disabled
+abrt-vmcore.service                           enabled 
+abrt-xorg.service                             enabled 
+abrtd.service                                 enabled 
+arp-ethers.service                            disabled
+atd.service                                   enabled 
+auditd.service                                enabled 
+autovt@.service                               enabled 
+blk-availability.service                      disabled
+brandbot.service                              static  
+chrony-dnssrv@.service                        static  
+chrony-wait.service                           disabled
+chronyd.service                               disabled
+cloud-config.service                          enabled 
+cloud-final.service                           enabled 
+cloud-init-local.service                      enabled 
+cloud-init.service                            enabled 
+console-getty.service                         disabled
+console-shell.service                         disabled
+container-getty@.service                      static  
+cpupower.service                              disabled
+crond.service                                 enabled 
+dbus-org.freedesktop.hostname1.service        static  
+dbus-org.freedesktop.import1.service          static  
+dbus-org.freedesktop.locale1.service          static  
+dbus-org.freedesktop.login1.service           static  
+dbus-org.freedesktop.machine1.service         static  
+dbus-org.freedesktop.timedate1.service        static  
+dbus.service                                  static  
+debug-shell.service                           disabled
+dm-event.service                              disabled
+dmraid-activation.service                     enabled 
+dnsmasq.service                               disabled
+dracut-cmdline.service                        static  
+dracut-initqueue.service                      static  
+dracut-mount.service                          static  
+dracut-pre-mount.service                      static  
+dracut-pre-pivot.service                      static  
+dracut-pre-trigger.service                    static  
+dracut-pre-udev.service                       static  
+dracut-shutdown.service                       static  
+ebtables.service                              disabled
+emergency.service                             static  
+epmd.service                                  disabled
+epmd@.service                                 disabled
+firewalld.service                             disabled
+fprintd.service                               static  
+fstrim.service                                static  
+getty@.service                                enabled 
+halt-local.service                            static  
+htcacheclean.service                          static  
+httpd.service                                 enabled 
+initrd-cleanup.service                        static  
+initrd-parse-etc.service                      static  
+initrd-switch-root.service                    static  
+initrd-udevadm-cleanup-db.service             static  
+ip6tables.service                             disabled
+iprdump.service                               disabled
+iprinit.service                               disabled
+iprupdate.service                             disabled
+iptables.service                              disabled
+irqbalance.service                            enabled 
+kdump.service                                 disabled
+kmod-static-nodes.service                     static  
+kpatch.service                                disabled
+libstoragemgmt.service                        enabled 
+lvm2-lvmetad.service                          disabled
+lvm2-lvmpolld.service                         disabled
+lvm2-monitor.service                          enabled 
+lvm2-pvscan@.service                          static  
+mdadm-grow-continue@.service                  static  
+mdadm-last-resort@.service                    static  
+mdmon@.service                                static  
+mdmonitor.service                             enabled 
+messagebus.service                            static  
+microcode.service                             enabled 
+mysqld.service                                disabled
+mysqld@.service                               disabled
+NetworkManager-dispatcher.service             disabled
+NetworkManager-wait-online.service            disabled
+NetworkManager.service                        disabled
+nfs-rquotad.service                           disabled
+ntpd.service                                  enabled 
+ntpdate.service                               disabled
+plymouth-halt.service                         disabled
+plymouth-kexec.service                        disabled
+plymouth-poweroff.service                     disabled
+plymouth-quit-wait.service                    disabled
+plymouth-quit.service                         disabled
+plymouth-read-write.service                   disabled
+plymouth-reboot.service                       disabled
+plymouth-start.service                        disabled
+plymouth-switch-root.service                  static  
+polkit.service                                static  
+postfix.service                               enabled 
+psacct.service                                disabled
+qemu-guest-agent.service                      enabled 
+quotaon.service                               static  
+rc-local.service                              static  
+rdisc.service                                 disabled
+rdma-ndd.service                              static  
+rdma.service                                  disabled
+rescue.service                                static  
+rhel-autorelabel-mark.service                 static  
+rhel-autorelabel.service                      static  
+rhel-configure.service                        static  
+rhel-dmesg.service                            disabled
+rhel-domainname.service                       disabled
+rhel-import-state.service                     static  
+rhel-loadmodules.service                      static  
+rhel-readonly.service                         static  
+rngd.service                                  enabled 
+rpc-rquotad.service                           disabled
+rpcbind.service                               indirect
+rsyncd.service                                disabled
+rsyncd@.service                               static  
+rsyslog.service                               enabled 
+saslauthd.service                             disabled
+selinux-policy-migrate-local-changes@.service static  
+serial-getty@.service                         disabled
+smartd.service                                enabled 
+sshd-keygen.service                           static  
+sshd.service                                  enabled 
+sshd@.service                                 static  
+svnserve.service                              disabled
+sysstat.service                               enabled 
+systemd-ask-password-console.service          static  
+systemd-ask-password-plymouth.service         static  
+systemd-ask-password-wall.service             static  
+systemd-backlight@.service                    static  
+systemd-binfmt.service                        static  
+systemd-bootchart.service                     disabled
+systemd-firstboot.service                     static  
+systemd-fsck-root.service                     static  
+systemd-fsck@.service                         static  
+systemd-halt.service                          static  
+systemd-hibernate-resume@.service             static  
+systemd-hibernate.service                     static  
+systemd-hostnamed.service                     static  
+systemd-hwdb-update.service                   static  
+systemd-hybrid-sleep.service                  static  
+systemd-importd.service                       static  
+systemd-initctl.service                       static  
+systemd-journal-catalog-update.service        static  
+systemd-journal-flush.service                 static  
+systemd-journald.service                      static  
+systemd-kexec.service                         static  
+systemd-localed.service                       static  
+systemd-logind.service                        static  
+systemd-machine-id-commit.service             static  
+systemd-machined.service                      static  
+systemd-modules-load.service                  static  
+systemd-nspawn@.service                       disabled
+systemd-poweroff.service                      static  
+systemd-quotacheck.service                    static  
+systemd-random-seed.service                   static  
+systemd-readahead-collect.service             enabled 
+systemd-readahead-done.service                indirect
+systemd-readahead-drop.service                enabled 
+systemd-readahead-replay.service              enabled 
+systemd-reboot.service                        static  
+systemd-remount-fs.service                    static  
+systemd-rfkill@.service                       static  
+systemd-shutdownd.service                     static  
+systemd-suspend.service                       static  
+systemd-sysctl.service                        static  
+systemd-timedated.service                     static  
+systemd-tmpfiles-clean.service                static  
+systemd-tmpfiles-setup-dev.service            static  
+systemd-tmpfiles-setup.service                static  
+systemd-udev-settle.service                   static  
+systemd-udev-trigger.service                  static  
+systemd-udevd.service                         static  
+systemd-update-done.service                   static  
+systemd-update-utmp-runlevel.service          static  
+systemd-update-utmp.service                   static  
+systemd-user-sessions.service                 static  
+systemd-vconsole-setup.service                static  
+tcsd.service                                  disabled
+teamd@.service                                static  
+tuned.service                                 enabled 
+unbound-anchor.service                        static  
+unbound-keygen.service                        disabled
+unbound.service                               enabled 
+usb_modeswitch@.service                       static  
+vsftpd.service                                enabled 
+vsftpd@.service                               disabled
+wpa_supplicant.service                        disabled
+zabbix-agent.service                          enabled 
+
+191 unit files listed.
+[sshd]===========================================================================================================
+#	$OpenBSD: sshd_config,v 1.93 2014/01/10 05:59:19 djm Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/local/bin:/usr/bin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+# If you want to change the port on a SELinux system, you have to tell
+# SELinux about this change.
+# semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+#
+Port "22"
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+# The default requires explicit activation of protocol 1
+Protocol 2
+
+# HostKey for protocol version 1
+#HostKey /etc/ssh/ssh_host_key
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Lifetime and size of ephemeral version 1 server key
+#KeyRegenerationInterval 1h
+#ServerKeyBits 1024
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+# obsoletes QuietMode and FascistLogging
+#SyslogFacility AUTH
+SyslogFacility AUTHPRIV
+#LogLevel INFO
+
+# Authentication:
+
+#LoginGraceTime 2m
+PermitRootLogin no
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+#RSAAuthentication yes
+#PubkeyAuthentication yes
+
+# The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
+# but this is overridden so installations will only check .ssh/authorized_keys
+AuthorizedKeysFile	.ssh/authorized_keys
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#RhostsRSAAuthentication no
+# similar for protocol version 2
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# RhostsRSAAuthentication and HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+PasswordAuthentication yes
+PermitEmptyPasswords no
+PasswordAuthentication yes
+
+# Change to no to disable s/key passwords
+#ChallengeResponseAuthentication yes
+ChallengeResponseAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+#KerberosUseKuserok yes
+
+# GSSAPI options
+GSSAPIAuthentication yes
+GSSAPICleanupCredentials no
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+#GSSAPIEnablek5users no
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+PasswordAuthentication yes
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+# WARNING: 'UsePAM no' is not supported in Red Hat Enterprise Linux and may cause several
+# problems.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+#PrintMotd yes
+#PrintLastLog yes
+#TCPKeepAlive yes
+#UseLogin no
+UsePrivilegeSeparation sandbox		# Default for new installations.
+#PermitUserEnvironment no
+#Compression delayed
+ClientAliveInterval 10
+ClientAliveCountMax 3
+#ShowPatchLevel no
+#UseDNS yes
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# Accept locale-related environment variables
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+
+# override default of no subsystems
+Subsystem	sftp	/usr/libexec/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#	X11Forwarding no
+#	AllowTcpForwarding no
+#	PermitTTY no
+#	ForceCommand cvs server
+[iptables]=======================================================================================================
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+[cron]===========================================================================================================
+#Ansible: infoseek
+*/30 * * * * sudo /usr/bin/php /home/insops/cron/get_infoseek_news.php > /tmp/get_infoseek_news.log 2>&1
+#0 10 * * * sudo sh /home/insops/logout/log_out.sh /tmp/logout.log 2>&1
+#Ansible: ntpdate
+0 1 * * * /usr/sbin/ntpdate -s -b z001-bastion
+#Ansible: log_rotate
+0 1 * * * sudo /usr/bin/find /home/logs -maxdepth 1 -mtime +31 -name "error_log*" -exec rm -f {} \; > /dev/null 2>&1
+#Ansible: logsys_ctl
+10 1 * * * /root/cron/logsys_ctl.sh > /dev/null 2>&1
+#Ansible: hourly_log_cleanup
+2 * * * * /root/cron/hourlylog_clean_gzip.sh
+#Ansible: dos_attack_ipcheck
+*/10 * * * * /root/cron/doscheck.sh > /dev/null 2>&1
+[ntp]============================================================================================================
+     remote           refid      st t when poll reach   delay   offset  jitter
+==============================================================================
+ z001-bastion    .XFAC.          16 u    - 1024    0    0.000    0.000   0.000
+[kernel-params]==================================================================================================
+abi.vsyscall32 = 1
+crypto.fips_enabled = 0
+debug.exception-trace = 1
+debug.kprobes-optimization = 1
+debug.panic_on_rcu_stall = 0
+dev.cdrom.autoclose = 1
+dev.cdrom.autoeject = 0
+dev.cdrom.check_media = 0
+dev.cdrom.debug = 0
+dev.cdrom.info = CD-ROM information, Id: cdrom.c 3.20 2003/12/17
+dev.cdrom.info = 
+dev.cdrom.info = drive name:		sr1	sr0
+dev.cdrom.info = drive speed:		4	4
+dev.cdrom.info = drive # of slots:	1	1
+dev.cdrom.info = Can close tray:		1	1
+dev.cdrom.info = Can open tray:		1	1
+dev.cdrom.info = Can lock tray:		1	1
+dev.cdrom.info = Can change speed:	1	1
+dev.cdrom.info = Can select disk:	0	0
+dev.cdrom.info = Can read multisession:	1	1
+dev.cdrom.info = Can read MCN:		1	1
+dev.cdrom.info = Reports media changed:	1	1
+dev.cdrom.info = Can play audio:		1	1
+dev.cdrom.info = Can write CD-R:		0	0
+dev.cdrom.info = Can write CD-RW:	0	0
+dev.cdrom.info = Can read DVD:		1	1
+dev.cdrom.info = Can write DVD-R:	0	0
+dev.cdrom.info = Can write DVD-RAM:	0	0
+dev.cdrom.info = Can read MRW:		1	1
+dev.cdrom.info = Can write MRW:		1	1
+dev.cdrom.info = Can write RAM:		1	1
+dev.cdrom.info = 
+dev.cdrom.info = 
+dev.cdrom.lock = 1
+dev.hpet.max-user-freq = 64
+dev.mac_hid.mouse_button2_keycode = 97
+dev.mac_hid.mouse_button3_keycode = 100
+dev.mac_hid.mouse_button_emulation = 0
+dev.parport.default.spintime = 500
+dev.parport.default.timeslice = 200
+dev.raid.speed_limit_max = 200000
+dev.raid.speed_limit_min = 1000
+dev.scsi.logging_level = 0
+fs.aio-max-nr = 65536
+fs.aio-nr = 0
+fs.binfmt_misc.status = enabled
+fs.dentry-state = 67759	40021	45	0	0	0
+fs.dir-notify-enable = 1
+fs.epoll.max_user_watches = 824709
+fs.file-max = 398856
+fs.file-nr = 2688	0	398856
+fs.inode-nr = 60551	1865
+fs.inode-state = 60551	1865	0	0	0	0	0
+fs.inotify.max_queued_events = 16384
+fs.inotify.max_user_instances = 128
+fs.inotify.max_user_watches = 8192
+fs.lease-break-time = 45
+fs.leases-enable = 1
+fs.may_detach_mounts = 0
+fs.mqueue.msg_default = 10
+fs.mqueue.msg_max = 10
+fs.mqueue.msgsize_default = 8192
+fs.mqueue.msgsize_max = 8192
+fs.mqueue.queues_max = 256
+fs.nr_open = 1048576
+fs.overflowgid = 65534
+fs.overflowuid = 65534
+fs.pipe-max-size = 1048576
+fs.pipe-user-pages-hard = 0
+fs.pipe-user-pages-soft = 16384
+fs.protected_hardlinks = 1
+fs.protected_symlinks = 1
+fs.quota.allocated_dquots = 0
+fs.quota.cache_hits = 0
+fs.quota.drops = 0
+fs.quota.free_dquots = 0
+fs.quota.lookups = 0
+fs.quota.reads = 0
+fs.quota.syncs = 2
+fs.quota.warnings = 1
+fs.quota.writes = 0
+fs.suid_dumpable = 0
+kernel.acct = 4	2	30
+kernel.acpi_video_flags = 0
+kernel.auto_msgmni = 1
+kernel.bootloader_type = 114
+kernel.bootloader_version = 2
+kernel.cad_pid = 1
+kernel.cap_last_cap = 36
+kernel.compat-log = 1
+kernel.core_pattern = |/usr/libexec/abrt-hook-ccpp %s %c %p %u %g %t e %P %I %h
+kernel.core_pipe_limit = 4
+kernel.core_uses_pid = 1
+kernel.ctrl-alt-del = 0
+kernel.dmesg_restrict = 0
+kernel.domainname = (none)
+kernel.ftrace_dump_on_oops = 0
+kernel.ftrace_enabled = 1
+kernel.hardlockup_all_cpu_backtrace = 0
+kernel.hardlockup_panic = 1
+kernel.hostname = z001-search11
+kernel.hotplug = 
+kernel.hung_task_check_count = 4194304
+kernel.hung_task_panic = 0
+kernel.hung_task_timeout_secs = 120
+kernel.hung_task_warnings = 10
+kernel.io_delay_type = 0
+kernel.kexec_load_disabled = 0
+kernel.keys.gc_delay = 300
+kernel.keys.maxbytes = 20000
+kernel.keys.maxkeys = 200
+kernel.keys.persistent_keyring_expiry = 259200
+kernel.keys.root_maxbytes = 25000000
+kernel.keys.root_maxkeys = 1000000
+kernel.kptr_restrict = 0
+kernel.kstack_depth_to_print = 12
+kernel.max_lock_depth = 1024
+kernel.modprobe = /sbin/modprobe
+kernel.modules_disabled = 0
+kernel.msg_next_id = -1
+kernel.msgmax = 8192
+kernel.msgmnb = 16384
+kernel.msgmni = 7899
+kernel.ngroups_max = 65536
+kernel.nmi_watchdog = 1
+kernel.ns_last_pid = 25027
+kernel.numa_balancing = 0
+kernel.numa_balancing_scan_delay_ms = 1000
+kernel.numa_balancing_scan_period_max_ms = 60000
+kernel.numa_balancing_scan_period_min_ms = 1000
+kernel.numa_balancing_scan_size_mb = 256
+kernel.numa_balancing_settle_count = 4
+kernel.osrelease = 3.10.0-693.2.2.el7.x86_64
+kernel.ostype = Linux
+kernel.overflowgid = 65534
+kernel.overflowuid = 65534
+kernel.panic = 0
+kernel.panic_on_io_nmi = 0
+kernel.panic_on_oops = 1
+kernel.panic_on_stackoverflow = 0
+kernel.panic_on_unrecovered_nmi = 0
+kernel.panic_on_warn = 0
+kernel.perf_cpu_time_max_percent = 25
+kernel.perf_event_max_sample_rate = 100000
+kernel.perf_event_mlock_kb = 516
+kernel.perf_event_paranoid = 1
+kernel.pid_max = 32768
+kernel.poweroff_cmd = /sbin/poweroff
+kernel.print-fatal-signals = 0
+kernel.printk = 4	4	1	7
+kernel.printk_delay = 0
+kernel.printk_ratelimit = 5
+kernel.printk_ratelimit_burst = 10
+kernel.pty.max = 4096
+kernel.pty.nr = 2
+kernel.pty.reserve = 1024
+kernel.random.boot_id = 5fd07931-2e14-40c7-9581-ad275dcc6f63
+kernel.random.entropy_avail = 3251
+kernel.random.poolsize = 4096
+kernel.random.read_wakeup_threshold = 64
+kernel.random.urandom_min_reseed_secs = 60
+kernel.random.uuid = da968f92-5cf9-45aa-b960-d64080f6620d
+kernel.random.write_wakeup_threshold = 3072
+kernel.randomize_va_space = 2
+kernel.real-root-dev = 0
+kernel.sched_autogroup_enabled = 0
+kernel.sched_cfs_bandwidth_slice_us = 5000
+kernel.sched_child_runs_first = 0
+kernel.sched_domain.cpu0.domain0.busy_factor = 32
+kernel.sched_domain.cpu0.domain0.busy_idx = 2
+kernel.sched_domain.cpu0.domain0.cache_nice_tries = 1
+kernel.sched_domain.cpu0.domain0.flags = 4143
+kernel.sched_domain.cpu0.domain0.forkexec_idx = 0
+kernel.sched_domain.cpu0.domain0.idle_idx = 1
+kernel.sched_domain.cpu0.domain0.imbalance_pct = 125
+kernel.sched_domain.cpu0.domain0.max_interval = 8
+kernel.sched_domain.cpu0.domain0.max_newidle_lb_cost = 22680
+kernel.sched_domain.cpu0.domain0.min_interval = 4
+kernel.sched_domain.cpu0.domain0.name = DIE
+kernel.sched_domain.cpu0.domain0.newidle_idx = 0
+kernel.sched_domain.cpu0.domain0.wake_idx = 0
+kernel.sched_domain.cpu1.domain0.busy_factor = 32
+kernel.sched_domain.cpu1.domain0.busy_idx = 2
+kernel.sched_domain.cpu1.domain0.cache_nice_tries = 1
+kernel.sched_domain.cpu1.domain0.flags = 4143
+kernel.sched_domain.cpu1.domain0.forkexec_idx = 0
+kernel.sched_domain.cpu1.domain0.idle_idx = 1
+kernel.sched_domain.cpu1.domain0.imbalance_pct = 125
+kernel.sched_domain.cpu1.domain0.max_interval = 8
+kernel.sched_domain.cpu1.domain0.max_newidle_lb_cost = 20604
+kernel.sched_domain.cpu1.domain0.min_interval = 4
+kernel.sched_domain.cpu1.domain0.name = DIE
+kernel.sched_domain.cpu1.domain0.newidle_idx = 0
+kernel.sched_domain.cpu1.domain0.wake_idx = 0
+kernel.sched_domain.cpu2.domain0.busy_factor = 32
+kernel.sched_domain.cpu2.domain0.busy_idx = 2
+kernel.sched_domain.cpu2.domain0.cache_nice_tries = 1
+kernel.sched_domain.cpu2.domain0.flags = 4143
+kernel.sched_domain.cpu2.domain0.forkexec_idx = 0
+kernel.sched_domain.cpu2.domain0.idle_idx = 1
+kernel.sched_domain.cpu2.domain0.imbalance_pct = 125
+kernel.sched_domain.cpu2.domain0.max_interval = 8
+kernel.sched_domain.cpu2.domain0.max_newidle_lb_cost = 25114
+kernel.sched_domain.cpu2.domain0.min_interval = 4
+kernel.sched_domain.cpu2.domain0.name = DIE
+kernel.sched_domain.cpu2.domain0.newidle_idx = 0
+kernel.sched_domain.cpu2.domain0.wake_idx = 0
+kernel.sched_domain.cpu3.domain0.busy_factor = 32
+kernel.sched_domain.cpu3.domain0.busy_idx = 2
+kernel.sched_domain.cpu3.domain0.cache_nice_tries = 1
+kernel.sched_domain.cpu3.domain0.flags = 4143
+kernel.sched_domain.cpu3.domain0.forkexec_idx = 0
+kernel.sched_domain.cpu3.domain0.idle_idx = 1
+kernel.sched_domain.cpu3.domain0.imbalance_pct = 125
+kernel.sched_domain.cpu3.domain0.max_interval = 8
+kernel.sched_domain.cpu3.domain0.max_newidle_lb_cost = 29271
+kernel.sched_domain.cpu3.domain0.min_interval = 4
+kernel.sched_domain.cpu3.domain0.name = DIE
+kernel.sched_domain.cpu3.domain0.newidle_idx = 0
+kernel.sched_domain.cpu3.domain0.wake_idx = 0
+kernel.sched_latency_ns = 18000000
+kernel.sched_migration_cost_ns = 500000
+kernel.sched_min_granularity_ns = 10000000
+kernel.sched_nr_migrate = 32
+kernel.sched_rr_timeslice_ms = 100
+kernel.sched_rt_period_us = 1000000
+kernel.sched_rt_runtime_us = 950000
+kernel.sched_schedstats = 0
+kernel.sched_shares_window_ns = 10000000
+kernel.sched_time_avg_ms = 1000
+kernel.sched_tunable_scaling = 1
+kernel.sched_wakeup_granularity_ns = 15000000
+kernel.sem = 250	32000	32	128
+kernel.sem_next_id = -1
+kernel.shm_next_id = -1
+kernel.shm_rmid_forced = 0
+kernel.shmall = 18446744073692774399
+kernel.shmmax = 18446744073692774399
+kernel.shmmni = 4096
+kernel.softlockup_all_cpu_backtrace = 0
+kernel.softlockup_panic = 0
+kernel.stack_tracer_enabled = 0
+kernel.sysrq = 16
+kernel.tainted = 0
+kernel.threads-max = 31460
+kernel.timer_migration = 1
+kernel.traceoff_on_warning = 0
+kernel.unknown_nmi_panic = 0
+kernel.usermodehelper.bset = 4294967295	31
+kernel.usermodehelper.inheritable = 4294967295	31
+kernel.version = #1 SMP Tue Sep 12 22:26:13 UTC 2017
+kernel.watchdog = 1
+kernel.watchdog_cpumask = 0-3
+kernel.watchdog_thresh = 10
+kernel.yama.ptrace_scope = 0
+net.core.bpf_jit_enable = 0
+net.core.busy_poll = 0
+net.core.busy_read = 0
+net.core.default_qdisc = pfifo_fast
+net.core.dev_weight = 64
+net.core.message_burst = 10
+net.core.message_cost = 5
+net.core.netdev_budget = 300
+net.core.netdev_max_backlog = 16384
+net.core.netdev_rss_key = 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+net.core.netdev_tstamp_prequeue = 1
+net.core.optmem_max = 20480
+net.core.rmem_default = 212992
+net.core.rmem_max = 212992
+net.core.rps_sock_flow_entries = 0
+net.core.somaxconn = 16384
+net.core.warnings = 1
+net.core.wmem_default = 212992
+net.core.wmem_max = 212992
+net.core.xfrm_acq_expires = 30
+net.core.xfrm_aevent_etime = 10
+net.core.xfrm_aevent_rseqth = 2
+net.core.xfrm_larval_drop = 1
+net.ipv4.cipso_cache_bucket_size = 10
+net.ipv4.cipso_cache_enable = 1
+net.ipv4.cipso_rbm_optfmt = 0
+net.ipv4.cipso_rbm_strictvalid = 1
+net.ipv4.conf.all.accept_local = 0
+net.ipv4.conf.all.accept_redirects = 1
+net.ipv4.conf.all.accept_source_route = 0
+net.ipv4.conf.all.arp_accept = 0
+net.ipv4.conf.all.arp_announce = 0
+net.ipv4.conf.all.arp_filter = 0
+net.ipv4.conf.all.arp_ignore = 0
+net.ipv4.conf.all.arp_notify = 0
+net.ipv4.conf.all.bootp_relay = 0
+net.ipv4.conf.all.disable_policy = 0
+net.ipv4.conf.all.disable_xfrm = 0
+net.ipv4.conf.all.force_igmp_version = 0
+net.ipv4.conf.all.forwarding = 0
+net.ipv4.conf.all.log_martians = 0
+net.ipv4.conf.all.mc_forwarding = 0
+net.ipv4.conf.all.medium_id = 0
+net.ipv4.conf.all.promote_secondaries = 1
+net.ipv4.conf.all.proxy_arp = 0
+net.ipv4.conf.all.proxy_arp_pvlan = 0
+net.ipv4.conf.all.route_localnet = 0
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.conf.all.secure_redirects = 1
+net.ipv4.conf.all.send_redirects = 1
+net.ipv4.conf.all.shared_media = 1
+net.ipv4.conf.all.src_valid_mark = 0
+net.ipv4.conf.all.tag = 0
+net.ipv4.conf.default.accept_local = 0
+net.ipv4.conf.default.accept_redirects = 1
+net.ipv4.conf.default.accept_source_route = 0
+net.ipv4.conf.default.arp_accept = 0
+net.ipv4.conf.default.arp_announce = 0
+net.ipv4.conf.default.arp_filter = 0
+net.ipv4.conf.default.arp_ignore = 0
+net.ipv4.conf.default.arp_notify = 0
+net.ipv4.conf.default.bootp_relay = 0
+net.ipv4.conf.default.disable_policy = 0
+net.ipv4.conf.default.disable_xfrm = 0
+net.ipv4.conf.default.force_igmp_version = 0
+net.ipv4.conf.default.forwarding = 0
+net.ipv4.conf.default.log_martians = 0
+net.ipv4.conf.default.mc_forwarding = 0
+net.ipv4.conf.default.medium_id = 0
+net.ipv4.conf.default.promote_secondaries = 1
+net.ipv4.conf.default.proxy_arp = 0
+net.ipv4.conf.default.proxy_arp_pvlan = 0
+net.ipv4.conf.default.route_localnet = 0
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.default.secure_redirects = 1
+net.ipv4.conf.default.send_redirects = 1
+net.ipv4.conf.default.shared_media = 1
+net.ipv4.conf.default.src_valid_mark = 0
+net.ipv4.conf.default.tag = 0
+net.ipv4.conf.eth0.accept_local = 0
+net.ipv4.conf.eth0.accept_redirects = 1
+net.ipv4.conf.eth0.accept_source_route = 0
+net.ipv4.conf.eth0.arp_accept = 0
+net.ipv4.conf.eth0.arp_announce = 0
+net.ipv4.conf.eth0.arp_filter = 0
+net.ipv4.conf.eth0.arp_ignore = 0
+net.ipv4.conf.eth0.arp_notify = 0
+net.ipv4.conf.eth0.bootp_relay = 0
+net.ipv4.conf.eth0.disable_policy = 0
+net.ipv4.conf.eth0.disable_xfrm = 0
+net.ipv4.conf.eth0.force_igmp_version = 0
+net.ipv4.conf.eth0.forwarding = 0
+net.ipv4.conf.eth0.log_martians = 0
+net.ipv4.conf.eth0.mc_forwarding = 0
+net.ipv4.conf.eth0.medium_id = 0
+net.ipv4.conf.eth0.promote_secondaries = 1
+net.ipv4.conf.eth0.proxy_arp = 0
+net.ipv4.conf.eth0.proxy_arp_pvlan = 0
+net.ipv4.conf.eth0.route_localnet = 0
+net.ipv4.conf.eth0.rp_filter = 1
+net.ipv4.conf.eth0.secure_redirects = 1
+net.ipv4.conf.eth0.send_redirects = 1
+net.ipv4.conf.eth0.shared_media = 1
+net.ipv4.conf.eth0.src_valid_mark = 0
+net.ipv4.conf.eth0.tag = 0
+net.ipv4.conf.eth1.accept_local = 0
+net.ipv4.conf.eth1.accept_redirects = 1
+net.ipv4.conf.eth1.accept_source_route = 0
+net.ipv4.conf.eth1.arp_accept = 0
+net.ipv4.conf.eth1.arp_announce = 0
+net.ipv4.conf.eth1.arp_filter = 0
+net.ipv4.conf.eth1.arp_ignore = 0
+net.ipv4.conf.eth1.arp_notify = 0
+net.ipv4.conf.eth1.bootp_relay = 0
+net.ipv4.conf.eth1.disable_policy = 0
+net.ipv4.conf.eth1.disable_xfrm = 0
+net.ipv4.conf.eth1.force_igmp_version = 0
+net.ipv4.conf.eth1.forwarding = 0
+net.ipv4.conf.eth1.log_martians = 0
+net.ipv4.conf.eth1.mc_forwarding = 0
+net.ipv4.conf.eth1.medium_id = 0
+net.ipv4.conf.eth1.promote_secondaries = 1
+net.ipv4.conf.eth1.proxy_arp = 0
+net.ipv4.conf.eth1.proxy_arp_pvlan = 0
+net.ipv4.conf.eth1.route_localnet = 0
+net.ipv4.conf.eth1.rp_filter = 1
+net.ipv4.conf.eth1.secure_redirects = 1
+net.ipv4.conf.eth1.send_redirects = 1
+net.ipv4.conf.eth1.shared_media = 1
+net.ipv4.conf.eth1.src_valid_mark = 0
+net.ipv4.conf.eth1.tag = 0
+net.ipv4.conf.lo.accept_local = 0
+net.ipv4.conf.lo.accept_redirects = 1
+net.ipv4.conf.lo.accept_source_route = 1
+net.ipv4.conf.lo.arp_accept = 0
+net.ipv4.conf.lo.arp_announce = 0
+net.ipv4.conf.lo.arp_filter = 0
+net.ipv4.conf.lo.arp_ignore = 0
+net.ipv4.conf.lo.arp_notify = 0
+net.ipv4.conf.lo.bootp_relay = 0
+net.ipv4.conf.lo.disable_policy = 1
+net.ipv4.conf.lo.disable_xfrm = 1
+net.ipv4.conf.lo.force_igmp_version = 0
+net.ipv4.conf.lo.forwarding = 0
+net.ipv4.conf.lo.log_martians = 0
+net.ipv4.conf.lo.mc_forwarding = 0
+net.ipv4.conf.lo.medium_id = 0
+net.ipv4.conf.lo.promote_secondaries = 0
+net.ipv4.conf.lo.proxy_arp = 0
+net.ipv4.conf.lo.proxy_arp_pvlan = 0
+net.ipv4.conf.lo.route_localnet = 0
+net.ipv4.conf.lo.rp_filter = 0
+net.ipv4.conf.lo.secure_redirects = 1
+net.ipv4.conf.lo.send_redirects = 1
+net.ipv4.conf.lo.shared_media = 1
+net.ipv4.conf.lo.src_valid_mark = 0
+net.ipv4.conf.lo.tag = 0
+net.ipv4.icmp_echo_ignore_all = 0
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+net.ipv4.icmp_errors_use_inbound_ifaddr = 0
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+net.ipv4.icmp_msgs_burst = 50
+net.ipv4.icmp_msgs_per_sec = 1000
+net.ipv4.icmp_ratelimit = 1000
+net.ipv4.icmp_ratemask = 6168
+net.ipv4.igmp_max_memberships = 20
+net.ipv4.igmp_max_msf = 10
+net.ipv4.igmp_qrv = 2
+net.ipv4.inet_peer_maxttl = 600
+net.ipv4.inet_peer_minttl = 120
+net.ipv4.inet_peer_threshold = 65664
+net.ipv4.ip_default_ttl = 64
+net.ipv4.ip_dynaddr = 0
+net.ipv4.ip_early_demux = 1
+net.ipv4.ip_forward = 0
+net.ipv4.ip_forward_use_pmtu = 0
+net.ipv4.ip_local_port_range = 32768	60999
+net.ipv4.ip_local_reserved_ports = 
+net.ipv4.ip_no_pmtu_disc = 0
+net.ipv4.ip_nonlocal_bind = 0
+net.ipv4.ipfrag_high_thresh = 4194304
+net.ipv4.ipfrag_low_thresh = 3145728
+net.ipv4.ipfrag_max_dist = 64
+net.ipv4.ipfrag_secret_interval = 600
+net.ipv4.ipfrag_time = 30
+net.ipv4.neigh.default.anycast_delay = 100
+net.ipv4.neigh.default.app_solicit = 0
+net.ipv4.neigh.default.base_reachable_time_ms = 30000
+net.ipv4.neigh.default.delay_first_probe_time = 5
+net.ipv4.neigh.default.gc_interval = 30
+net.ipv4.neigh.default.gc_stale_time = 60
+net.ipv4.neigh.default.gc_thresh1 = 128
+net.ipv4.neigh.default.gc_thresh2 = 512
+net.ipv4.neigh.default.gc_thresh3 = 1024
+net.ipv4.neigh.default.locktime = 100
+net.ipv4.neigh.default.mcast_solicit = 3
+net.ipv4.neigh.default.proxy_delay = 80
+net.ipv4.neigh.default.proxy_qlen = 64
+net.ipv4.neigh.default.retrans_time_ms = 1000
+net.ipv4.neigh.default.ucast_solicit = 3
+net.ipv4.neigh.default.unres_qlen = 31
+net.ipv4.neigh.default.unres_qlen_bytes = 65536
+net.ipv4.neigh.eth0.anycast_delay = 100
+net.ipv4.neigh.eth0.app_solicit = 0
+net.ipv4.neigh.eth0.base_reachable_time_ms = 30000
+net.ipv4.neigh.eth0.delay_first_probe_time = 5
+net.ipv4.neigh.eth0.gc_stale_time = 60
+net.ipv4.neigh.eth0.locktime = 100
+net.ipv4.neigh.eth0.mcast_solicit = 3
+net.ipv4.neigh.eth0.proxy_delay = 80
+net.ipv4.neigh.eth0.proxy_qlen = 64
+net.ipv4.neigh.eth0.retrans_time_ms = 1000
+net.ipv4.neigh.eth0.ucast_solicit = 3
+net.ipv4.neigh.eth0.unres_qlen = 31
+net.ipv4.neigh.eth0.unres_qlen_bytes = 65536
+net.ipv4.neigh.eth1.anycast_delay = 100
+net.ipv4.neigh.eth1.app_solicit = 0
+net.ipv4.neigh.eth1.base_reachable_time_ms = 30000
+net.ipv4.neigh.eth1.delay_first_probe_time = 5
+net.ipv4.neigh.eth1.gc_stale_time = 60
+net.ipv4.neigh.eth1.locktime = 100
+net.ipv4.neigh.eth1.mcast_solicit = 3
+net.ipv4.neigh.eth1.proxy_delay = 80
+net.ipv4.neigh.eth1.proxy_qlen = 64
+net.ipv4.neigh.eth1.retrans_time_ms = 1000
+net.ipv4.neigh.eth1.ucast_solicit = 3
+net.ipv4.neigh.eth1.unres_qlen = 31
+net.ipv4.neigh.eth1.unres_qlen_bytes = 65536
+net.ipv4.neigh.lo.anycast_delay = 100
+net.ipv4.neigh.lo.app_solicit = 0
+net.ipv4.neigh.lo.base_reachable_time_ms = 30000
+net.ipv4.neigh.lo.delay_first_probe_time = 5
+net.ipv4.neigh.lo.gc_stale_time = 60
+net.ipv4.neigh.lo.locktime = 100
+net.ipv4.neigh.lo.mcast_solicit = 3
+net.ipv4.neigh.lo.proxy_delay = 80
+net.ipv4.neigh.lo.proxy_qlen = 64
+net.ipv4.neigh.lo.retrans_time_ms = 1000
+net.ipv4.neigh.lo.ucast_solicit = 3
+net.ipv4.neigh.lo.unres_qlen = 31
+net.ipv4.neigh.lo.unres_qlen_bytes = 65536
+net.ipv4.ping_group_range = 1	0
+net.ipv4.route.error_burst = 5000
+net.ipv4.route.error_cost = 1000
+net.ipv4.route.gc_elasticity = 8
+net.ipv4.route.gc_interval = 60
+net.ipv4.route.gc_min_interval = 0
+net.ipv4.route.gc_min_interval_ms = 500
+net.ipv4.route.gc_thresh = -1
+net.ipv4.route.gc_timeout = 300
+net.ipv4.route.max_size = 2147483647
+net.ipv4.route.min_adv_mss = 256
+net.ipv4.route.min_pmtu = 552
+net.ipv4.route.mtu_expires = 600
+net.ipv4.route.redirect_load = 20
+net.ipv4.route.redirect_number = 9
+net.ipv4.route.redirect_silence = 20480
+net.ipv4.tcp_abort_on_overflow = 0
+net.ipv4.tcp_adv_win_scale = 1
+net.ipv4.tcp_allowed_congestion_control = cubic reno
+net.ipv4.tcp_app_win = 31
+net.ipv4.tcp_autocorking = 1
+net.ipv4.tcp_available_congestion_control = cubic reno
+net.ipv4.tcp_base_mss = 512
+net.ipv4.tcp_challenge_ack_limit = 1000
+net.ipv4.tcp_congestion_control = cubic
+net.ipv4.tcp_dsack = 1
+net.ipv4.tcp_early_retrans = 3
+net.ipv4.tcp_ecn = 2
+net.ipv4.tcp_fack = 1
+net.ipv4.tcp_fastopen = 0
+net.ipv4.tcp_fastopen_key = 00000000-00000000-00000000-00000000
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_frto = 2
+net.ipv4.tcp_invalid_ratelimit = 500
+net.ipv4.tcp_keepalive_intvl = 75
+net.ipv4.tcp_keepalive_probes = 9
+net.ipv4.tcp_keepalive_time = 7200
+net.ipv4.tcp_limit_output_bytes = 262144
+net.ipv4.tcp_low_latency = 0
+net.ipv4.tcp_max_orphans = 16384
+net.ipv4.tcp_max_ssthresh = 0
+net.ipv4.tcp_max_syn_backlog = 16384
+net.ipv4.tcp_max_tw_buckets = 16384
+net.ipv4.tcp_mem = 92418	123227	184836
+net.ipv4.tcp_min_tso_segs = 2
+net.ipv4.tcp_moderate_rcvbuf = 1
+net.ipv4.tcp_mtu_probing = 0
+net.ipv4.tcp_no_metrics_save = 0
+net.ipv4.tcp_notsent_lowat = -1
+net.ipv4.tcp_orphan_retries = 0
+net.ipv4.tcp_reordering = 3
+net.ipv4.tcp_retrans_collapse = 1
+net.ipv4.tcp_retries1 = 3
+net.ipv4.tcp_retries2 = 15
+net.ipv4.tcp_rfc1337 = 0
+net.ipv4.tcp_rmem = 4096	87380	6291456
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_slow_start_after_idle = 1
+net.ipv4.tcp_stdurg = 0
+net.ipv4.tcp_syn_retries = 6
+net.ipv4.tcp_synack_retries = 5
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_thin_dupack = 0
+net.ipv4.tcp_thin_linear_timeouts = 0
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_tso_win_divisor = 3
+net.ipv4.tcp_tw_recycle = 0
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_window_scaling = 1
+net.ipv4.tcp_wmem = 4096	16384	4194304
+net.ipv4.tcp_workaround_signed_windows = 0
+net.ipv4.udp_mem = 94380	125843	188760
+net.ipv4.udp_rmem_min = 4096
+net.ipv4.udp_wmem_min = 4096
+net.ipv4.xfrm4_gc_thresh = 32768
+net.ipv6.anycast_src_echo_reply = 0
+net.ipv6.bindv6only = 0
+net.ipv6.conf.all.accept_dad = 1
+net.ipv6.conf.all.accept_ra = 1
+net.ipv6.conf.all.accept_ra_defrtr = 1
+net.ipv6.conf.all.accept_ra_pinfo = 1
+net.ipv6.conf.all.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.all.accept_ra_rtr_pref = 1
+net.ipv6.conf.all.accept_redirects = 1
+net.ipv6.conf.all.accept_source_route = 0
+net.ipv6.conf.all.autoconf = 1
+net.ipv6.conf.all.dad_transmits = 1
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.all.force_mld_version = 0
+net.ipv6.conf.all.force_tllao = 0
+net.ipv6.conf.all.forwarding = 0
+net.ipv6.conf.all.hop_limit = 64
+net.ipv6.conf.all.max_addresses = 16
+net.ipv6.conf.all.max_desync_factor = 600
+net.ipv6.conf.all.mc_forwarding = 0
+net.ipv6.conf.all.mldv1_unsolicited_report_interval = 10000
+net.ipv6.conf.all.mldv2_unsolicited_report_interval = 1000
+net.ipv6.conf.all.mtu = 1280
+net.ipv6.conf.all.ndisc_notify = 0
+net.ipv6.conf.all.optimistic_dad = 0
+net.ipv6.conf.all.proxy_ndp = 0
+net.ipv6.conf.all.regen_max_retry = 3
+net.ipv6.conf.all.router_probe_interval = 60
+net.ipv6.conf.all.router_solicitation_delay = 1
+net.ipv6.conf.all.router_solicitation_interval = 4
+net.ipv6.conf.all.router_solicitations = 3
+net.ipv6.conf.all.temp_prefered_lft = 86400
+net.ipv6.conf.all.temp_valid_lft = 604800
+net.ipv6.conf.all.use_tempaddr = 0
+net.ipv6.conf.default.accept_dad = 1
+net.ipv6.conf.default.accept_ra = 1
+net.ipv6.conf.default.accept_ra_defrtr = 1
+net.ipv6.conf.default.accept_ra_pinfo = 1
+net.ipv6.conf.default.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.default.accept_ra_rtr_pref = 1
+net.ipv6.conf.default.accept_redirects = 1
+net.ipv6.conf.default.accept_source_route = 0
+net.ipv6.conf.default.autoconf = 1
+net.ipv6.conf.default.dad_transmits = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.default.force_mld_version = 0
+net.ipv6.conf.default.force_tllao = 0
+net.ipv6.conf.default.forwarding = 0
+net.ipv6.conf.default.hop_limit = 64
+net.ipv6.conf.default.max_addresses = 16
+net.ipv6.conf.default.max_desync_factor = 600
+net.ipv6.conf.default.mc_forwarding = 0
+net.ipv6.conf.default.mldv1_unsolicited_report_interval = 10000
+net.ipv6.conf.default.mldv2_unsolicited_report_interval = 1000
+net.ipv6.conf.default.mtu = 1280
+net.ipv6.conf.default.ndisc_notify = 0
+net.ipv6.conf.default.optimistic_dad = 0
+net.ipv6.conf.default.proxy_ndp = 0
+net.ipv6.conf.default.regen_max_retry = 3
+net.ipv6.conf.default.router_probe_interval = 60
+net.ipv6.conf.default.router_solicitation_delay = 1
+net.ipv6.conf.default.router_solicitation_interval = 4
+net.ipv6.conf.default.router_solicitations = 3
+net.ipv6.conf.default.temp_prefered_lft = 86400
+net.ipv6.conf.default.temp_valid_lft = 604800
+net.ipv6.conf.default.use_tempaddr = 0
+net.ipv6.conf.eth0.accept_dad = 1
+net.ipv6.conf.eth0.accept_ra = 1
+net.ipv6.conf.eth0.accept_ra_defrtr = 1
+net.ipv6.conf.eth0.accept_ra_pinfo = 1
+net.ipv6.conf.eth0.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.eth0.accept_ra_rtr_pref = 1
+net.ipv6.conf.eth0.accept_redirects = 1
+net.ipv6.conf.eth0.accept_source_route = 0
+net.ipv6.conf.eth0.autoconf = 1
+net.ipv6.conf.eth0.dad_transmits = 1
+net.ipv6.conf.eth0.disable_ipv6 = 1
+net.ipv6.conf.eth0.force_mld_version = 0
+net.ipv6.conf.eth0.force_tllao = 0
+net.ipv6.conf.eth0.forwarding = 0
+net.ipv6.conf.eth0.hop_limit = 64
+net.ipv6.conf.eth0.max_addresses = 16
+net.ipv6.conf.eth0.max_desync_factor = 600
+net.ipv6.conf.eth0.mc_forwarding = 0
+net.ipv6.conf.eth0.mldv1_unsolicited_report_interval = 10000
+net.ipv6.conf.eth0.mldv2_unsolicited_report_interval = 1000
+net.ipv6.conf.eth0.mtu = 1500
+net.ipv6.conf.eth0.ndisc_notify = 0
+net.ipv6.conf.eth0.optimistic_dad = 0
+net.ipv6.conf.eth0.proxy_ndp = 0
+net.ipv6.conf.eth0.regen_max_retry = 3
+net.ipv6.conf.eth0.router_probe_interval = 60
+net.ipv6.conf.eth0.router_solicitation_delay = 1
+net.ipv6.conf.eth0.router_solicitation_interval = 4
+net.ipv6.conf.eth0.router_solicitations = 3
+net.ipv6.conf.eth0.temp_prefered_lft = 86400
+net.ipv6.conf.eth0.temp_valid_lft = 604800
+net.ipv6.conf.eth0.use_tempaddr = 0
+net.ipv6.conf.eth1.accept_dad = 1
+net.ipv6.conf.eth1.accept_ra = 1
+net.ipv6.conf.eth1.accept_ra_defrtr = 1
+net.ipv6.conf.eth1.accept_ra_pinfo = 1
+net.ipv6.conf.eth1.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.eth1.accept_ra_rtr_pref = 1
+net.ipv6.conf.eth1.accept_redirects = 1
+net.ipv6.conf.eth1.accept_source_route = 0
+net.ipv6.conf.eth1.autoconf = 1
+net.ipv6.conf.eth1.dad_transmits = 1
+net.ipv6.conf.eth1.disable_ipv6 = 1
+net.ipv6.conf.eth1.force_mld_version = 0
+net.ipv6.conf.eth1.force_tllao = 0
+net.ipv6.conf.eth1.forwarding = 0
+net.ipv6.conf.eth1.hop_limit = 64
+net.ipv6.conf.eth1.max_addresses = 16
+net.ipv6.conf.eth1.max_desync_factor = 600
+net.ipv6.conf.eth1.mc_forwarding = 0
+net.ipv6.conf.eth1.mldv1_unsolicited_report_interval = 10000
+net.ipv6.conf.eth1.mldv2_unsolicited_report_interval = 1000
+net.ipv6.conf.eth1.mtu = 1500
+net.ipv6.conf.eth1.ndisc_notify = 0
+net.ipv6.conf.eth1.optimistic_dad = 0
+net.ipv6.conf.eth1.proxy_ndp = 0
+net.ipv6.conf.eth1.regen_max_retry = 3
+net.ipv6.conf.eth1.router_probe_interval = 60
+net.ipv6.conf.eth1.router_solicitation_delay = 1
+net.ipv6.conf.eth1.router_solicitation_interval = 4
+net.ipv6.conf.eth1.router_solicitations = 3
+net.ipv6.conf.eth1.temp_prefered_lft = 86400
+net.ipv6.conf.eth1.temp_valid_lft = 604800
+net.ipv6.conf.eth1.use_tempaddr = 0
+net.ipv6.conf.lo.accept_dad = -1
+net.ipv6.conf.lo.accept_ra = 1
+net.ipv6.conf.lo.accept_ra_defrtr = 1
+net.ipv6.conf.lo.accept_ra_pinfo = 1
+net.ipv6.conf.lo.accept_ra_rt_info_max_plen = 0
+net.ipv6.conf.lo.accept_ra_rtr_pref = 1
+net.ipv6.conf.lo.accept_redirects = 1
+net.ipv6.conf.lo.accept_source_route = 0
+net.ipv6.conf.lo.autoconf = 1
+net.ipv6.conf.lo.dad_transmits = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.lo.force_mld_version = 0
+net.ipv6.conf.lo.force_tllao = 0
+net.ipv6.conf.lo.forwarding = 0
+net.ipv6.conf.lo.hop_limit = 64
+net.ipv6.conf.lo.max_addresses = 16
+net.ipv6.conf.lo.max_desync_factor = 600
+net.ipv6.conf.lo.mc_forwarding = 0
+net.ipv6.conf.lo.mldv1_unsolicited_report_interval = 10000
+net.ipv6.conf.lo.mldv2_unsolicited_report_interval = 1000
+net.ipv6.conf.lo.mtu = 65536
+net.ipv6.conf.lo.ndisc_notify = 0
+net.ipv6.conf.lo.optimistic_dad = 0
+net.ipv6.conf.lo.proxy_ndp = 0
+net.ipv6.conf.lo.regen_max_retry = 3
+net.ipv6.conf.lo.router_probe_interval = 60
+net.ipv6.conf.lo.router_solicitation_delay = 1
+net.ipv6.conf.lo.router_solicitation_interval = 4
+net.ipv6.conf.lo.router_solicitations = 3
+net.ipv6.conf.lo.temp_prefered_lft = 86400
+net.ipv6.conf.lo.temp_valid_lft = 604800
+net.ipv6.conf.lo.use_tempaddr = -1
+net.ipv6.icmp.ratelimit = 1000
+net.ipv6.idgen_delay = 1
+net.ipv6.idgen_retries = 3
+net.ipv6.ip6frag_high_thresh = 4194304
+net.ipv6.ip6frag_low_thresh = 3145728
+net.ipv6.ip6frag_secret_interval = 600
+net.ipv6.ip6frag_time = 60
+net.ipv6.ip_nonlocal_bind = 0
+net.ipv6.mld_max_msf = 64
+net.ipv6.mld_qrv = 2
+net.ipv6.neigh.default.anycast_delay = 100
+net.ipv6.neigh.default.app_solicit = 0
+net.ipv6.neigh.default.base_reachable_time_ms = 30000
+net.ipv6.neigh.default.delay_first_probe_time = 5
+net.ipv6.neigh.default.gc_interval = 30
+net.ipv6.neigh.default.gc_stale_time = 60
+net.ipv6.neigh.default.gc_thresh1 = 128
+net.ipv6.neigh.default.gc_thresh2 = 512
+net.ipv6.neigh.default.gc_thresh3 = 1024
+net.ipv6.neigh.default.locktime = 0
+net.ipv6.neigh.default.mcast_solicit = 3
+net.ipv6.neigh.default.proxy_delay = 80
+net.ipv6.neigh.default.proxy_qlen = 64
+net.ipv6.neigh.default.retrans_time_ms = 1000
+net.ipv6.neigh.default.ucast_solicit = 3
+net.ipv6.neigh.default.unres_qlen = 31
+net.ipv6.neigh.default.unres_qlen_bytes = 65536
+net.ipv6.neigh.eth0.anycast_delay = 100
+net.ipv6.neigh.eth0.app_solicit = 0
+net.ipv6.neigh.eth0.base_reachable_time_ms = 30000
+net.ipv6.neigh.eth0.delay_first_probe_time = 5
+net.ipv6.neigh.eth0.gc_stale_time = 60
+net.ipv6.neigh.eth0.locktime = 0
+net.ipv6.neigh.eth0.mcast_solicit = 3
+net.ipv6.neigh.eth0.proxy_delay = 80
+net.ipv6.neigh.eth0.proxy_qlen = 64
+net.ipv6.neigh.eth0.retrans_time_ms = 1000
+net.ipv6.neigh.eth0.ucast_solicit = 3
+net.ipv6.neigh.eth0.unres_qlen = 31
+net.ipv6.neigh.eth0.unres_qlen_bytes = 65536
+net.ipv6.neigh.eth1.anycast_delay = 100
+net.ipv6.neigh.eth1.app_solicit = 0
+net.ipv6.neigh.eth1.base_reachable_time_ms = 30000
+net.ipv6.neigh.eth1.delay_first_probe_time = 5
+net.ipv6.neigh.eth1.gc_stale_time = 60
+net.ipv6.neigh.eth1.locktime = 0
+net.ipv6.neigh.eth1.mcast_solicit = 3
+net.ipv6.neigh.eth1.proxy_delay = 80
+net.ipv6.neigh.eth1.proxy_qlen = 64
+net.ipv6.neigh.eth1.retrans_time_ms = 1000
+net.ipv6.neigh.eth1.ucast_solicit = 3
+net.ipv6.neigh.eth1.unres_qlen = 31
+net.ipv6.neigh.eth1.unres_qlen_bytes = 65536
+net.ipv6.neigh.lo.anycast_delay = 100
+net.ipv6.neigh.lo.app_solicit = 0
+net.ipv6.neigh.lo.base_reachable_time_ms = 30000
+net.ipv6.neigh.lo.delay_first_probe_time = 5
+net.ipv6.neigh.lo.gc_stale_time = 60
+net.ipv6.neigh.lo.locktime = 0
+net.ipv6.neigh.lo.mcast_solicit = 3
+net.ipv6.neigh.lo.proxy_delay = 80
+net.ipv6.neigh.lo.proxy_qlen = 64
+net.ipv6.neigh.lo.retrans_time_ms = 1000
+net.ipv6.neigh.lo.ucast_solicit = 3
+net.ipv6.neigh.lo.unres_qlen = 31
+net.ipv6.neigh.lo.unres_qlen_bytes = 65536
+net.ipv6.route.gc_elasticity = 9
+net.ipv6.route.gc_interval = 30
+net.ipv6.route.gc_min_interval = 0
+net.ipv6.route.gc_min_interval_ms = 500
+net.ipv6.route.gc_thresh = 1024
+net.ipv6.route.gc_timeout = 60
+net.ipv6.route.max_size = 16384
+net.ipv6.route.min_adv_mss = 1220
+net.ipv6.route.mtu_expires = 600
+net.ipv6.xfrm6_gc_thresh = 32768
+net.netfilter.nf_log.0 = NONE
+net.netfilter.nf_log.1 = NONE
+net.netfilter.nf_log.10 = NONE
+net.netfilter.nf_log.11 = NONE
+net.netfilter.nf_log.12 = NONE
+net.netfilter.nf_log.2 = NONE
+net.netfilter.nf_log.3 = NONE
+net.netfilter.nf_log.4 = NONE
+net.netfilter.nf_log.5 = NONE
+net.netfilter.nf_log.6 = NONE
+net.netfilter.nf_log.7 = NONE
+net.netfilter.nf_log.8 = NONE
+net.netfilter.nf_log.9 = NONE
+net.unix.max_dgram_qlen = 512
+user.max_ipc_namespaces = 15730
+user.max_mnt_namespaces = 15730
+user.max_net_namespaces = 15730
+user.max_pid_namespaces = 15730
+user.max_user_namespaces = 0
+user.max_uts_namespaces = 15730
+vm.admin_reserve_kbytes = 8192
+vm.block_dump = 0
+vm.dirty_background_bytes = 0
+vm.dirty_background_ratio = 10
+vm.dirty_bytes = 0
+vm.dirty_expire_centisecs = 3000
+vm.dirty_ratio = 30
+vm.dirty_writeback_centisecs = 500
+vm.drop_caches = 0
+vm.extfrag_threshold = 500
+vm.hugepages_treat_as_movable = 0
+vm.hugetlb_shm_group = 0
+vm.laptop_mode = 0
+vm.legacy_va_layout = 0
+vm.lowmem_reserve_ratio = 256	256	32
+vm.max_map_count = 65530
+vm.memory_failure_early_kill = 0
+vm.memory_failure_recovery = 1
+vm.min_free_kbytes = 67584
+vm.min_slab_ratio = 5
+vm.min_unmapped_ratio = 1
+vm.mmap_min_addr = 4096
+vm.mmap_rnd_bits = 28
+vm.mmap_rnd_compat_bits = 8
+vm.nr_hugepages = 0
+vm.nr_hugepages_mempolicy = 0
+vm.nr_overcommit_hugepages = 0
+vm.nr_pdflush_threads = 0
+vm.numa_zonelist_order = default
+vm.oom_dump_tasks = 1
+vm.oom_kill_allocating_task = 0
+vm.overcommit_kbytes = 0
+vm.overcommit_memory = 0
+vm.overcommit_ratio = 50
+vm.page-cluster = 3
+vm.panic_on_oom = 0
+vm.percpu_pagelist_fraction = 0
+vm.stat_interval = 1
+vm.swappiness = 30
+vm.user_reserve_kbytes = 124051
+vm.vfs_cache_pressure = 100
+vm.zone_reclaim_mode = 0
+[logrotate]======================================================================================================
+# see "man logrotate" for details
+# rotate log files weekly
+weekly
+
+# keep 4 weeks worth of backlogs
+rotate 24
+
+# create new (empty) log files after rotating old ones
+create
+
+# use date as a suffix of the rotated file
+dateext
+
+# uncomment this if you want your log files compressed
+#compress
+
+# RPM packages drop log rotation information into this directory
+include /etc/logrotate.d
+
+# no packages own wtmp and btmp -- we'll rotate them here
+/var/log/wtmp {
+    monthly
+    create 0664 root utmp
+	minsize 1M
+    rotate 1
+}
+
+/var/log/btmp {
+    missingok
+    monthly
+    create 0600 root utmp
+    rotate 1
+}
+
+# system-specific logs may be also be configured here.
