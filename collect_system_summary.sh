@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Define
 export OS_FLAG=`cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/'`
