@@ -1,7 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
 # Define
 export OS_FLAG=`cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/'`
+
+# collect system summary
+uname -a
+cat /etc/redhat-release
+cat /proc/cpuinfo | grep "processor" | wc -l
+free -m | awk '{print $2}' | sed -n 2p
+df -Th
 
 # collect system summary
 date
