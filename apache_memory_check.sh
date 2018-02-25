@@ -36,19 +36,20 @@ do
     echo -e "${child_pid}\t${CHILD_MEM}${UNIT}\t${CHILD_MEM_SHARED}${UNIT}\t${CHILD_MEM_NO_SHARED}${UNIT}"
 done
 
-#平均値計算
 CHILD_MEM_AVG=`expr $CHILD_MEM_TOTAL / $COUNT`
 CHILD_MEM_AVG_NO_SHARED=`expr $CHILD_MEM_TOTAL_NO_SHARED / $COUNT`
 
 MEM_TOTAL_USED=`expr $PARENT_MEM + $CHILD_MEM_TOTAL_NO_SHARED`
 MAX_CLIENTS_ESTIMATE=$(((MEM_TOTAL - PARENT_MEM) / CHILD_MEM_AVG_NO_SHARED))
 
+echo -e "=========================================================================="
 echo -e "HTTPD_PROCESS_COUNT\t\t\t: ${COUNT}"
-echo -e "MEM_TOTAL_USED_HTTPD_CHILD\t\t: ${CHILD_MEM_TOTAL} ${UNIT}"
 echo -e "MEM_AVG_USED_HTTPD_CHILD\t\t: ${CHILD_MEM_AVG} ${UNIT}"
-echo -e "MEM_TOTAL_USED_HTTPD_CHILD(NOSHARED)\t: ${CHILD_MEM_TOTAL_NO_SHARED} ${UNIT}"
 echo -e "MEM_AVG_USED_HTTPD_CHILD(NOSHARED)\t: ${CHILD_MEM_AVG_NO_SHARED} ${UNIT}"
+echo -e "MEM_TOTAL_USED_HTTPD_CHILD\t\t: ${CHILD_MEM_TOTAL} ${UNIT}"
+echo -e "MEM_TOTAL_USED_HTTPD_CHILD(NOSHARED)\t: ${CHILD_MEM_TOTAL_NO_SHARED} ${UNIT}"
+echo -e "MEM_TOTAL_USED_HTTPD_PARENT\t\t: ${PARENT_MEM} ${UNIT}"
 echo -e "=========================================================================="
 echo -e "MEM_TOTAL\t\t: ${MEM_TOTAL} ${UNIT}"
 echo -e "MEM_TOTAL_HTTPD_USED\t: ${MEM_TOTAL_USED} ${UNIT}"
-echo -e "NEED_MAXLIENTS\t\t: ${MAX_CLIENTS_ESTIMATE}"
+echo -e "MAX_CLIENTS_ESTIMATE\t: ${MAX_CLIENTS_ESTIMATE}"
