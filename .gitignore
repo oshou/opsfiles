@@ -1,5 +1,6 @@
 tmp/*
 *.swp
 summary*
+*.list
 domain_list.csv
 spec*
