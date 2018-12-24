@@ -1,4 +1,7 @@
 #!/bin/bash
+date '+%Y/%m/%d %H:%M:%S'
+hostname
+echo "================================================================================================================="
 
 # Define
 export OS_FLAG=`cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/'`
@@ -11,8 +14,6 @@ free -m | awk '{print $2}' | sed -n 2p
 df -Th
 
 # collect system summary
-date
-hostname
 echo "[cpu]============================================================================================================"
 lscpu
 cat /proc/cpuinfo
